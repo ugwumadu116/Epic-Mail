@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Epic-Mail is a web app that helps people exchange
+  messages/information over the internet." />
+  <meta name="keywords" content="Email, Instant messaging" />
   <title>Epic-Mail</title>
   <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Space+Mono" />
-  <meta charset="utf-8" />
   <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
@@ -24,6 +26,39 @@
       <button class="login">login</button>
     </div>
   </section>
+  <section id="register">
+    <form>
+      <div class="formLogo">
+        <a href="./index.html">Home</a>
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </div>
+      <div class="formGroup">
+        <input type="text" placeholder="First Name" />
+      </div>
+      <div class="formGroup">
+        <input type="text" placeholder="Last Name" />
+      </div>
+      <div class="formGroup">
+        <input type="email" placeholder="Email" />
+      </div>
+      <div class="formGroup">
+        <input type="number" placeholder="Phone Number" />
+      </div>
+      <div class="formGroup">
+        <input type="text" placeholder="Password" />
+      </div>
+      <div class="formGroup">
+        <input type="text" placeholder="confirm password" />
+      </div>
+      <div class="submitForm">
+        <button>signup</button>
+      </div>
+      <div class="formGroup">
+        <h4>Already a member? <button class="loginCaller">signin</button></h4>
+      </div>
+    </form>
+  </section>
+  <script src="./js/main.js"></script>
 </body>
 
 </html>
