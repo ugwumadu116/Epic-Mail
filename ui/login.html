@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="Epic-Mail is a web app that helps people exchange
-  messages/information over the internet." />
-  <meta name="keywords" content="Email, Instant messaging" />
-  <title>Epic-Mail</title>
+  <title>Login</title>
   <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Space+Mono" />
   <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
@@ -16,49 +13,26 @@
 </head>
 
 <body>
-  <section id="home">
-    <div class="header">
-      <h1>Welcome To Epic Mail</h1>
-      <p>send your mails to your friends</p>
-    </div>
-    <div class="container">
-      <button class="signup">signup</button>
-      <button class="login">login</button>
-    </div>
-  </section>
-  <section id="register">
-    <form action="./login.html">
+  <section id="login">
+    <form action="#">
       <div class="formLogo">
         <a href="./index.html">Home</a>
         <i class="fa fa-times" aria-hidden="true"></i>
       </div>
       <div class="formGroup">
-        <input type="text" placeholder="First Name" />
-      </div>
-      <div class="formGroup">
-        <input type="text" placeholder="Last Name" />
-      </div>
-      <div class="formGroup">
         <input type="email" placeholder="Email" />
-      </div>
-      <div class="formGroup">
-        <input type="number" placeholder="Phone Number" />
       </div>
       <div class="formGroup">
         <input type="text" placeholder="Password" />
       </div>
-      <div class="formGroup">
-        <input type="text" placeholder="confirm password" />
-      </div>
       <div class="submitForm">
-        <button>signup</button>
+        <button>Login</button>
       </div>
       <div class="formGroup">
-        <h4>Already a member? <button class="loginCaller">signin</button></h4>
+        <span>Not a member? <a href="./signup.html" class="loginCaller">signup</a></span>
       </div>
     </form>
   </section>
-  <script src="./js/main.js"></script>
 </body>
 
 </html>
