@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login</title>
+  <title>Signup</title>
   <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Space+Mono" />
   <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
@@ -13,22 +13,34 @@
 </head>
 
 <body>
-  <section id="login">
-    <form action="#">
+  <section id="register">
+    <form action="./login.html">
       <div class="formLogo">
         <a href="./index.html">Home</a>
+      </div>
+      <div class="formGroup">
+        <input type="text" placeholder="First Name" />
+      </div>
+      <div class="formGroup">
+        <input type="text" placeholder="Last Name" />
       </div>
       <div class="formGroup">
         <input type="email" placeholder="Email" />
       </div>
       <div class="formGroup">
-        <input type="text" placeholder="Password" />
-      </div>
-      <div class="submitForm">
-        <button>Login</button>
+        <input type="number" placeholder="Phone Number" />
       </div>
       <div class="formGroup">
-        <span>Not a member? <a href="./signup.html" class="loginCaller">signup</a></span>
+        <input type="text" placeholder="Password" />
+      </div>
+      <div class="formGroup">
+        <input type="text" placeholder="confirm password" />
+      </div>
+      <div class="submitForm">
+        <button>signup</button>
+      </div>
+      <div class="formGroup">
+        <span>Already a member? <a href="./login.html" class="loginCaller">Login</a></span>
       </div>
     </form>
   </section>

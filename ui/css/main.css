@@ -36,7 +36,7 @@
     color: white;
   }
   .header h1{
-      font-size: 40px;
+      font-size: 30px;
   }
   .container {
     display: flex;
@@ -71,16 +71,8 @@
     font-weight: bold;
     transform: scale(0.9, 0.9);
   }
-  #register {
-    display: none;
-    position: relative;
-    top: -250px;
-    margin: 0px 300px;
-    background: white;
-    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.25);
-    border-radius: 5px;
-  }
-  #login {
+  #login,
+  #register  {
     margin: 50px 300px;
     background: white;
     box-shadow: 0 5px 15px rgb(0, 0, 0, 0.25);
@@ -92,16 +84,8 @@
     justify-content: center;
     padding: 10px 0px;
   }
-  #register .formLogo i,
-  #login .formLogo i {
-    font-size: 25px;
-    color: #FF6D00;
-    padding-right: 50px;
-  }
   #register  .formLogo a,
   #login  .formLogo a {
-    padding-left: 20px;
-    flex: 1;
     color: #FF6D00;
   }
   #register .formGroup,
@@ -110,6 +94,8 @@
     justify-content: center;
     margin: 20px;
   }
+  #register .formGroup span,
+  #register .formGroup span a,
   #login .formGroup span,
   #login .formGroup span a{
     font-size: 17px;
@@ -170,7 +156,7 @@
 
   @media (max-width: 950px) {
     #register {
-      margin: 0px 40px;
+      margin: 30px 40px;
     }
     #login {
       margin: 60px 40px;
