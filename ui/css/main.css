@@ -2,9 +2,18 @@
     font-family: "Space Mono", "Muli", sans-serif;
     margin: 0;
     padding: 0;
+    font-size: 20px;
     box-sizing: border-box;
   }
-body{
+
+  input[type='number'] {
+    -moz-appearance:textfield;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  body{
     background: linear-gradient(to bottom right,
     #002f4b,#dc4225);
     width: 100%;
@@ -13,8 +22,11 @@ body{
   a {
     text-decoration: none;
   }
+  textarea:focus, input:focus{
+    outline: none;
+  }
   #home {
-    padding: 100px 0 0 0;
+    padding: 150px 0 0 0;
   }
   .header {
     display: flex;
@@ -58,4 +70,89 @@ body{
     color: #FF6D00;
     font-weight: bold;
     transform: scale(0.9, 0.9);
+  }
+  #register {
+    display: none;
+    position: relative;
+    top: -250px;
+    margin: 0px 300px;
+    background: white;
+    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+  #register .formLogo {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+  }
+  #register .formLogo i {
+    font-size: 25px;
+    color: #FF6D00;
+    padding-right: 50px;
+  }
+  #register  .formLogo a {
+    padding-left: 20px;
+    flex: 1;
+    color: #FF6D00;
+  }
+  #register .formGroup {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+  #register .loginCaller{
+    border: none;
+    background: transparent;
+    color: #dc4225;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  #register .loginCaller:hover {
+    transform: scale(0.8, 0.8);
+    transition: all 0.5s ease-in-out;
+  }
+  #register input {
+    width: 655px;
+    padding: 0 20px;
+    text-decoration: none;
+    line-height: 50px;
+    font-size: 15px;
+    height: 50px;
+    border: 1px solid #e6e6e6;
+    border-bottom-width: 3px;
+    border-radius: 30px;
+  }
+  #register input:active {
+    border: 2px solid #FF6D00;
+    transition: all 0.1s ease-in-out;
+  }
+  #register .submitForm {
+    display: flex;
+    justify-content: center;
+  }
+  #register .submitForm button {
+    color: #fdf9f8;
+    border: 2px solid #FF6D00;
+    background: #FF6D00;
+    width: 200px;
+    padding: 5px 0;
+    margin-bottom: 0px;
+    transition: all 0.5s ease-in-out;
+  }
+  #register .submitForm button:hover{
+    background: transparent;
+    color: black;
+    transform: scale(0.9, 0.9);
+  }
+  @media (max-width: 950px) {
+    #register {
+      margin: 0px 40px;
+    }
+    #register input {
+        width: 355px;
+    }
+    .header {
+      font-size: 16px;
+    }
   }
