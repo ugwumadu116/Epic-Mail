@@ -80,27 +80,43 @@
     box-shadow: 0 5px 15px rgb(0, 0, 0, 0.25);
     border-radius: 5px;
   }
-  #register .formLogo {
+  #login {
+    margin: 50px 300px;
+    background: white;
+    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+  #register .formLogo,
+  #login .formLogo {
     display: flex;
     justify-content: center;
     padding: 10px 0px;
   }
-  #register .formLogo i {
+  #register .formLogo i,
+  #login .formLogo i {
     font-size: 25px;
     color: #FF6D00;
     padding-right: 50px;
   }
-  #register  .formLogo a {
+  #register  .formLogo a,
+  #login  .formLogo a {
     padding-left: 20px;
     flex: 1;
     color: #FF6D00;
   }
-  #register .formGroup {
+  #register .formGroup,
+  #login .formGroup {
     display: flex;
     justify-content: center;
     margin: 20px;
   }
-  #register .loginCaller{
+  #login .formGroup span,
+  #login .formGroup span a{
+    font-size: 17px;
+    margin-bottom: 20px;
+  }
+  #register .loginCaller,
+  #login .loginCaller{
     border: none;
     background: transparent;
     color: #dc4225;
@@ -108,11 +124,13 @@
     font-weight: bold;
     margin-bottom: 10px;
   }
-  #register .loginCaller:hover {
+  #register .loginCaller:hover,
+  #login .loginCaller:hover {
     transform: scale(0.8, 0.8);
     transition: all 0.5s ease-in-out;
   }
-  #register input {
+  #register input,
+  #login input  {
     width: 655px;
     padding: 0 20px;
     text-decoration: none;
@@ -123,15 +141,18 @@
     border-bottom-width: 3px;
     border-radius: 30px;
   }
-  #register input:active {
+  #register input:active 
+  #login input:active{
     border: 2px solid #FF6D00;
     transition: all 0.1s ease-in-out;
   }
-  #register .submitForm {
+  #register .submitForm,
+  #login .submitForm {
     display: flex;
     justify-content: center;
   }
-  #register .submitForm button {
+  #register .submitForm button,
+  #login .submitForm button {
     color: #fdf9f8;
     border: 2px solid #FF6D00;
     background: #FF6D00;
@@ -140,16 +161,22 @@
     margin-bottom: 0px;
     transition: all 0.5s ease-in-out;
   }
-  #register .submitForm button:hover{
+  #register .submitForm button:hover,
+  #login .submitForm button:hover{
     background: transparent;
     color: black;
     transform: scale(0.9, 0.9);
   }
+
   @media (max-width: 950px) {
     #register {
       margin: 0px 40px;
     }
-    #register input {
+    #login {
+      margin: 60px 40px;
+    }
+    #register input,
+    #login input {
         width: 355px;
     }
     .header {
