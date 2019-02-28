@@ -145,6 +145,60 @@
     color: black;
     transform: scale(0.9, 0.9);
   }
+  #success{
+    display: flex; 
+    justify-content: center;
+  }
+  
+  #success .card{
+    display: none;
+    position: relative;
+    top: -570px;
+    width: 200px;
+    height: 200px;
+    background: white;
+    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.25);
+    border-radius: 5px;
+    animation-name: succesCard;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+  }
+  @keyframes succesCard {
+    0% {
+      left: 0px;
+      top: 300px;
+     }
+    50% {
+      left: 0px;
+      top: 0px;
+    }
+    100% {
+      left: 0px;
+      top: 0px;
+    }
+  }
+  #success .card .container{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+  }
+  #success .container h3{
+    margin: 30px; 
+  }
+  #success .container div{
+    height: 90px;
+    width: 90px;
+    border-radius: 50px;
+    background: #37903C;
+    margin-bottom: 30px;
+  }
+  #success .container i{
+    position: relative;
+    left: 26px;
+    top: 22px;
+    font-size: 40px;
+    color: white;
+  }
   @media (max-width: 950px) {
     #register {
       margin: 0px 40px;
