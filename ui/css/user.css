@@ -1,0 +1,242 @@
+html {
+    scroll-behavior: smooth;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+  }
+  button {
+    cursor: pointer;
+  }
+  body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Space Mono", "Muli", sans-serif;
+  }
+  a {
+    text-decoration: none;
+    color: none;
+  }
+  textarea:focus, input:focus{
+    outline: none;
+  }
+  p {
+    margin: 0px;
+  }
+  li {
+    list-style: none;
+  }
+  #header {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background:  #FF6D00;
+    height: 50px;
+    display: flex;
+  }
+  #header .bars {
+    flex: 0.6;
+    color: #fff;
+  }
+  #header .searchArea {
+    flex: 3;
+  }
+  
+  #header .bell span {
+    position: relative;
+    left: -10px;
+    top: -15px;
+    background: #002f4b;
+    padding: 3px;
+    border-radius: 50%;
+    color: #f4f6f9;
+  }
+  #header .fa-bell-o {
+    margin: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #fff;
+  }
+  #header .fa-bars {
+    display: none;
+    font-size: 20px;
+    padding: 10px;
+  }
+  #header .searchArea .fa-search{
+    font-size: 20px;
+    margin-top: 10px;
+    color: #fff;
+  }
+  #header .searchArea input{
+    background: transparent;
+    padding: 0 10px;
+    line-height: 30px;
+    font-size: 15px;
+    border: 1px solid #e6e6e6;
+    border-radius: 30px; 
+    width: 90%;
+    transition: all 0.5s ease-in-out
+  }
+  #header .searchArea input:hover{
+    background: #F4F6F9;
+  }
+  #sidenav {
+    background: #fff;
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+  #sidenav .fa-times {
+    display: none;
+  }
+  #sidenav .topic a{
+    color: #002f4b;
+    font-size: 22px;
+  }
+  #sidenav .topic {
+    color: #002f4b;
+    font-family: "Space Mono";
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  #sidenav .username {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  #sidenav .userImg {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 0 auto;
+    width: 90px;
+    border-radius: 50%;
+    height: 90px;
+    background: url(../img/pass2.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  #sidenav nav a {
+    display: block;
+    text-decoration: none;
+    color: #002f4b;
+    font-size: 15px;
+    margin-bottom: 10px;
+    padding: 15px 30px;
+    font-weight: 300;
+    transition: all 0.3s ease-in-out;
+  }  
+  #sidenav nav a:hover {
+    background: #FF6D00;
+    border-left: 5px solid #92cf48;
+    padding: 15px 30px 15px 25px;
+  }  
+  #sidenav nav a:hover i {
+    color: #002f4b;
+  }  
+  #sidenav nav {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+  }  
+  #sidenav nav .active {
+    background: #FF6D00;
+    border-left: 5px solid #92cf48;
+    padding: 15px 30px 15px 25px;
+  }  
+  #sidenav nav .active i {
+    color: #002f4b;
+  }  
+  #sidenav nav i {
+    margin-right: 0.8rem;
+    color: #FF6D00;
+    font-size: 1.4rem;
+    display: inline-block;
+    width: 30px;
+    position: relative;
+    top: 3px;
+  }
+  #compose  {
+    margin: 55px 0px 0px 200px;
+    background: white;
+  }
+  #compose .formLogo{
+    display: flex;
+    background: #002f4b;
+    color: #fff;
+    padding: 10px;
+  }
+  #compose .formGroup {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+  #compose textarea {
+    width: 785px;
+    font-size: 15px;
+    padding: 0 20px;
+    border: 3px solid #e6e6e6;
+    border-bottom-width: 3px;
+  }
+  #compose input {
+    width: 785px;
+    padding: 0 20px;
+    line-height: 50px;
+    font-size: 15px;
+    height: 50px;
+    border: 1px solid #e6e6e6;
+    border-bottom-width: 3px;
+  }
+  #compose .submitForm {
+    display: flex;
+    justify-content: center;
+  }
+  #compose .submitForm button {
+    color: #fdf9f8;
+    border: 2px solid #FF6D00;
+    background: #FF6D00;
+    width: 200px;
+    padding: 10px 0;
+    margin: 10px;
+    margin-bottom: 0px;
+    transition: all 0.5s ease-in-out;
+  }
+  #compose .submitForm button:hover{
+    background: #002f4b;
+    transform: scale(0.9, 0.9);
+  }
+  @media (max-width: 750px) {
+    #sidenav {
+      display: none;
+    }
+    #sidenav .fa-times {
+      display: block;
+      color: red;
+      float: right;
+      font-size: 20px;
+      margin: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+    #header .fa-bars {
+      display: block;
+    }
+    #sidenav .fa-times:hover {
+      color: #a9a9a9;
+      transform: scale(0.9, 0.9);
+    }
+    #compose {
+      margin: 70px 40px;
+    }
+    /* #compose input {
+        width: 355px;
+    } */
+  }
+  
