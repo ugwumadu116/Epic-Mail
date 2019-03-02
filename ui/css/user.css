@@ -243,10 +243,12 @@ html {
     background: #002f4b;
     transform: scale(0.9, 0.9);
   }
-  #inbox{
+  #inbox,
+  #sent{
     margin: 55px 0px 0px 200px;
   }
-  #inbox .container .card{
+  #inbox .container .card,
+  #sent  .container .card{
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -254,15 +256,28 @@ html {
     border: 1px solid #e6e6e6;
     border-bottom-width: 3px;
   }
-  #inbox .container .card .user{
+  #inbox .container .card .user,
+  #sent  .container .card .user{
     display: flex
   }
-  #inbox .container .card .user > span:first-child{
+  #inbox .container .card .user > span:first-child,
+  #sent  .container .card .user > span:first-child{
     flex: 1;
     font-size: 20px;
   }
-  #inbox .container .card .user i{
+  #inbox .container .card .user i,
+  #sent  .container .card .user i{
     color: #FF6D00;
+    font-size: 20px;
+  }
+  #sent .container .card .status{
+    display: flex;
+    color: #FF6D00;
+  }
+  #sent .container .card .status span{
+    flex: 1;
+  }
+  #sent .container .card .status i{
     font-size: 20px;
   }
   #output{
@@ -460,7 +475,8 @@ html {
       margin: 70px 40px;
     }
     #inbox,
-    #draft {
+    #draft,
+    #sent {
       margin: 70px 40px;
     }
     #text,
