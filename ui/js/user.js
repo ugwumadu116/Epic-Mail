@@ -15,3 +15,22 @@ function closeSidebar() {
     sidenav.style.display = "none";
     body.style.backgroundColor = "#f4f6f9";
 }
+// Email Message
+const messageCard = document.getElementsByClassName('messageCard');
+
+const overlay = document.getElementById("overlay")
+overlay.addEventListener('click', closeOverlay)
+
+for (let i = 0; i < messageCard.length; i++) {
+    messageCard[i].addEventListener('click', openOverlay)
+}
+function openOverlay() {
+    document.getElementById("overlay").style.display = "block";
+}
+
+function closeOverlay(e) {
+    if (e.target === overlay) {
+        document.getElementById("overlay").style.display = "none";
+    }
+}
+
