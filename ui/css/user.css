@@ -312,9 +312,6 @@ html {
   #text .subject .fa-trash{
     color: #FF6D00;
   }
-  /* #text .subject .fa-file-archive-o{
-    color: #002f4b;
-  } */
   #text .subject h5{
     flex: 1;
     font-size: 15px;
@@ -377,6 +374,67 @@ html {
   }
   #draft .container .card .status i{
     font-size: 20px;
+  }
+  #draftText{
+    position: absolute;
+    width: auto;
+    height: 500px;
+    line-height: 30px;
+    top: 50%;
+    left: 50%;
+    color: black;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    background: white;
+    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 10px;
+    overflow-y: scroll;
+  }
+  #draftText .formLogo{
+    display: flex;
+    background: #002f4b;
+    color: #fff;
+    padding: 10px;
+  }
+  #draftText .formGroup {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+  #draftText textarea {
+    width: auto;
+    font-size: 15px;
+    padding: 0 20px;
+    border: 3px solid #e6e6e6;
+    border-bottom-width: 3px;
+  }
+  #draftText input {
+    width: 785px;
+    padding: 0 20px;
+    line-height: 50px;
+    font-size: 15px;
+    height: 50px;
+    border: 1px solid #e6e6e6;
+    border-bottom-width: 3px;
+  }
+  #draftText .submitForm {
+    display: flex;
+    justify-content: center;
+  }
+  #draftText .submitForm button {
+    color: #fdf9f8;
+    border: 2px solid #FF6D00;
+    background: #FF6D00;
+    width: 200px;
+    padding: 10px 0;
+    margin: 10px;
+    margin-bottom: 0px;
+    transition: all 0.5s ease-in-out;
+  }
+  #draftText .submitForm button:hover{
+    background: #002f4b;
+    transform: scale(0.9, 0.9);
   }
   
   @media (max-width: 750px) {

@@ -15,7 +15,7 @@ function closeSidebar() {
     sidenav.style.display = "none";
     body.style.backgroundColor = "#f4f6f9";
 }
-// Email Message
+// Open Email Message
 const messageCard = document.getElementsByClassName('messageCard');
 
 const overlay = document.getElementById("overlay")
@@ -34,3 +34,7 @@ function closeOverlay(e) {
     }
 }
 
+/// send draft
+document.getElementById("email").value = 'amaka@gmail.com'
+document.getElementById("subject").value = 'Git version control'
+const message = document.getElementById("message").value = 'this will be a git message'
