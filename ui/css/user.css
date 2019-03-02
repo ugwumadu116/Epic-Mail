@@ -5,7 +5,7 @@ html {
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
-    font-size: 14px;
+    font-size: 15px;
   }
   button {
     cursor: pointer;
@@ -82,6 +82,9 @@ html {
   #header .searchArea input:hover{
     background: #F4F6F9;
   }
+  #sidenav::-webkit-scrollbar { 
+    display: none;
+}
   #sidenav {
     background: #fff;
     position: fixed;
@@ -213,6 +216,31 @@ html {
     background: #002f4b;
     transform: scale(0.9, 0.9);
   }
+  #inbox{
+    margin: 55px 0px 0px 200px;
+  }
+  /* #inbox .container{
+    width: 700px;
+  } */
+  #inbox .container .card{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    line-height: 30px;
+    border: 1px solid #e6e6e6;
+    border-bottom-width: 3px;
+  }
+  #inbox .container .card .user{
+    display: flex
+  }
+  #inbox .container .card .user > span:first-child{
+    flex: 1;
+    font-size: 20px;
+  }
+  #inbox .container .card .user i{
+    color: #FF6D00;
+    font-size: 20px;
+  }
   @media (max-width: 750px) {
     #sidenav {
       display: none;
@@ -235,8 +263,8 @@ html {
     #compose {
       margin: 70px 40px;
     }
-    /* #compose input {
-        width: 355px;
-    } */
+    #inbox {
+      margin: 70px 40px;
+    }
   }
   
