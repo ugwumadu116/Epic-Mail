@@ -8,11 +8,13 @@ const sidenav = document.querySelector("#sidenav");
 const body = document.getElementsByTagName("body")[0];
 
 function callSidebar() {
-    sidenav.style.display = "block";
+    sidenav.style.width = 'auto';
+    closeNav.style.display = "block";
     body.style.backgroundColor = "#A9A9A9";
 }
 function closeSidebar() {
-    sidenav.style.display = "none";
+    sidenav.style.width = '0';
+    closeNav.style.display = "none";
     body.style.backgroundColor = "#f4f6f9";
 }
 // Open Email Message
@@ -33,7 +35,6 @@ function closeOverlay(e) {
         document.getElementById("overlay").style.display = "none";
     }
 }
-
 /// send draft
 document.getElementById("email").value = 'amaka@gmail.com'
 document.getElementById("subject").value = 'Git version control'
