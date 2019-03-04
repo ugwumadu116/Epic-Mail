@@ -37,27 +37,17 @@ html {
     display: flex;
   }
   #header .bars {
-    flex: 0.6;
+    flex: 1.7;
     color: #fff;
   }
   #header .searchArea {
-    flex: 3;
-  }
-  
-  #header .bell span {
-    position: relative;
-    left: -10px;
-    top: -15px;
-    background: #002f4b;
-    padding: 3px;
-    border-radius: 50%;
-    color: #f4f6f9;
-  }
-  #header .fa-bell-o {
-    margin: 10px;
-    font-size: 25px;
-    cursor: pointer;
+    flex: 2;
+    font-size: 20px;
     color: #fff;
+  }
+  #header .searchArea h1{
+    padding-top: 10px;
+    font-size: 22px;
   }
   #header .fa-bars {
     font-size: 20px;
@@ -175,88 +165,13 @@ html {
     position: relative;
     top: 3px;
   }
-  #compose  {
-    margin: 55px 0px 0px 200px;
-    background: white;
-  }
-  #compose .formLogo{
-    display: flex;
-    background: #002f4b;
-    color: #fff;
-    padding: 10px;
-  }
-  #compose .formLogo h3{
-    flex: 1
-  }
-  #compose .formLogo .tips{
-    position: relative;
-  }
-  #compose .formLogo .tips i{
-    font-size: 20px;
-    color: #FF6D00;
-  }
-  #compose .formLogo .tips .tipstext{
-    visibility: hidden;
-    padding: 3px;
-    background-color: #FF6D00;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    font-size: 13px;
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: 50%;
-    margin-left: -60px;
-  }
-  #compose .formLogo .tips:hover .tipstext{
-    visibility: visible;
-  }
-  #compose .formGroup {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-  }
-  #compose textarea {
-    width: 785px;
-    font-size: 15px;
-    padding: 0 20px;
-    border: 3px solid #e6e6e6;
-    border-bottom-width: 3px;
-  }
-  #compose input {
-    width: 785px;
-    padding: 0 20px;
-    line-height: 50px;
-    font-size: 15px;
-    height: 50px;
-    border: 1px solid #e6e6e6;
-    border-bottom-width: 3px;
-  }
-  #compose .submitForm {
-    display: flex;
-    justify-content: center;
-  }
-  #compose .submitForm button {
-    color: #fdf9f8;
-    border: 2px solid #FF6D00;
-    background: #FF6D00;
-    width: 200px;
-    padding: 10px 0;
-    margin: 10px;
-    margin-bottom: 0px;
-    transition: all 0.5s ease-in-out;
-  }
-  #compose .submitForm button:hover{
-    background: #002f4b;
-    transform: scale(0.9, 0.9);
-  }
-  #inbox,
-  #sent{
+  #group{
     margin: 55px 0px 0px 200px;
   }
-  #inbox .container .card,
-  #sent  .container .card{
+  #group  .container a{
+    color: black;
+  } 
+  #group  .container .card{
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -264,28 +179,140 @@ html {
     border: 1px solid #e6e6e6;
     border-bottom-width: 3px;
   }
-  #inbox .container .card .user,
-  #sent  .container .card .user{
+  #group  .container .card .user{
     display: flex
   }
-  #inbox .container .card .user > span:first-child,
-  #sent  .container .card .user > span:first-child{
+  #group  .container .card .user > span:first-child{
     flex: 1;
     font-size: 20px;
   }
-  #inbox .container .card .user i,
-  #sent  .container .card .user i{
+  #group  .container .card .user i{
     color: #FF6D00;
     font-size: 20px;
   }
-  #sent .container .card .status{
+  #group  .container .card .user .tips{
+    position: relative;
+  }
+  #group  .container .card .user .tips i{
+    font-size: 20px;
+    padding-right: 20px;
+  }
+  
+  #group  .container .card .user .tips .tipstext {
+    visibility: hidden;
+    width: 80px;
+    padding: 3px;
+    background-color: #002f4b;
+    color: #FF6D00;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 13px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+  }  
+  #group  .container .card .user .tips:hover .tipstext {
+    visibility: visible;
+  }
+  #groupHeader {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background:  #FF6D00;
+    height: 50px;
     display: flex;
-    color: #FF6D00;
   }
-  #sent .container .card .status span{
+  #groupHeader .bars {
     flex: 1;
+    color: #fff;
   }
-  #sent .container .card .status i{
+  #groupHeader .searchArea {
+    flex: 1;
+    padding: 10px;
+  }
+  #groupHeader .searchArea h2 {
+    font-size: 20px;
+    color: #fff;
+  }
+  #groupHeader .bell span {
+    position: relative;
+    left: -10px;
+    top: -15px;
+    background: #002f4b;
+    padding: 3px;
+    border-radius: 50%;
+    color: #f4f6f9;
+  }
+  #groupHeader .fa-bell-o {
+    margin: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #fff;
+  }
+  #groupHeader .fa-bars {
+    font-size: 20px;
+    padding: 10px;
+  }
+  #groupInbox{
+    margin: 55px 0px 0px 200px;
+  }
+  #groupInbox .heading{
+    position: fixed;
+    width: auto;
+    color: #fff;
+  }
+  #groupInbox .heading .formGroup {
+    display: flex;
+    margin: 5px;
+  }
+  #groupInbox .heading textarea {
+    flex: 1;
+    width: auto;    
+    font-size: 12px;
+    border: 3px solid #e6e6e6;
+    border-bottom-width: 3px;
+  }
+  #groupInbox .heading .submitForm {
+    display: flex;
+    justify-content: right;
+  }
+  #groupInbox .heading .submitForm button {
+    color: #fdf9f8;
+    border: 2px solid #FF6D00;
+    background: #FF6D00;
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+    margin-bottom: 0px;
+    transition: all 0.5s ease-in-out;
+  }
+  #groupInbox .heading .submitForm button:hover{
+    background: #002f4b;
+    transform: scale(0.9, 0.9);
+  }
+  #groupInbox .container{
+    height: 60vh;
+    overflow-y: scroll;
+  }
+  #groupInbox .container .card{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    line-height: 30px;
+    border: 1px solid #e6e6e6;
+    border-bottom-width: 3px;
+  }
+  #groupInbox .container .card .user{
+    display: flex
+  }
+  #groupInbox .container .card .user > span:first-child{
+    flex: 1;
+    font-size: 20px;
+  }
+  #groupInbox .container .card .user i{
+    color: #FF6D00;
     font-size: 20px;
   }
   #output{
@@ -301,6 +328,19 @@ html {
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+  }
+  #overlay2 {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: red;
     z-index: 2;
     cursor: pointer;
   }
@@ -366,115 +406,22 @@ html {
   #text .subject .tips:hover .tipstext {
     visibility: visible;
   }
-  #draft{
-    margin: 55px 0px 0px 200px;
-  }
-  #draft .container .card{
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    line-height: 30px;
-    border: 1px solid #e6e6e6;
-    border-bottom-width: 3px;
-  }
-  #draft .container .card .user{
-    display: flex
-  }
-  #draft .container .card .user > span:first-child{
-    flex: 1;
-    font-size: 20px;
-  }
-  #draft .container .card .user i{
-    color: #FF6D00;
-    font-size: 20px;
-  }
-  #draft .container .card .status{
-    display: flex;
-    color: #FF6D00;
-  }
-  #draft .container .card .status span{
-    flex: 1;
-  }
-  #draft .container .card .status i{
-    font-size: 20px;
-  }
-  #draftText{
-    position: absolute;
-    width: auto;
-    height: 500px;
-    line-height: 30px;
-    top: 50%;
-    left: 50%;
-    color: black;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    background: white;
-    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.25);
-    border-radius: 5px;
-    padding: 10px;
-    overflow-y: scroll;
-  }
-  #draftText .formLogo{
-    display: flex;
-    background: #002f4b;
-    color: #fff;
-    padding: 10px;
-  }
-  #draftText .formGroup {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-  }
-  #draftText textarea {
-    width: auto;
-    font-size: 15px;
-    padding: 0 20px;
-    border: 3px solid #e6e6e6;
-    border-bottom-width: 3px;
-  }
-  #draftText input {
-    width: 785px;
-    padding: 0 20px;
-    line-height: 50px;
-    font-size: 15px;
-    height: 50px;
-    border: 1px solid #e6e6e6;
-    border-bottom-width: 3px;
-  }
-  #draftText .submitForm {
-    display: flex;
-    justify-content: center;
-  }
-  #draftText .submitForm button {
-    color: #fdf9f8;
-    border: 2px solid #FF6D00;
-    background: #FF6D00;
-    width: 200px;
-    padding: 10px 0;
-    margin: 10px;
-    margin-bottom: 0px;
-    transition: all 0.5s ease-in-out;
-  }
-  #draftText .submitForm button:hover{
-    background: #002f4b;
-    transform: scale(0.9, 0.9);
-  }
   
   @media (max-width: 750px) {
+    #header .bars {
+        flex: 0.8;
+    }
     #sidenav {
       width: 0px;
     }
-    #compose {
+    #group {
       margin: 70px 40px;
     }
-    #inbox,
-    #draft,
-    #sent {
+    #groupInbox {
       margin: 70px 40px;
     }
-    #text,
-    #draftText{
-      width: 500px;
+    #groupInbox .heading textarea {
+        width: 355px;
     }
   }
   
