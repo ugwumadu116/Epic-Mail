@@ -34,11 +34,11 @@
         <i class="fa fa-home" aria-hidden="true"></i>
         Home
       </a>
-      <a class="active" href="./admin.html">
+      <a href="./admin.html">
         <i class="fa fa-users" aria-hidden="true"></i>
         Admin group
       </a>
-      <a href="./addusers.html">
+      <a class="active" href="./addusers.html">
         <i class="fa fa-plus" aria-hidden="true"></i>
         Add user
       </a>
@@ -47,52 +47,18 @@
   <section id="addGroup">
     <form action="#">
       <div class="formLogo">
-        <h2>Add group Here</h2>
+        <h2>Add users to group</h2>
       </div>
       <div class="formGroup">
         <input type="text" placeholder="Group name" />
       </div>
+      <div class="formGroup">
+        <input type="text" placeholder="Users email" />
+      </div>
       <div class="submitForm">
-        <button>Create group</button>
+        <button>Add to group</button>
       </div>
     </form>
-  </section>
-  <section id="group">
-    <div class="container">
-      <div class="card">
-        <div class="user">
-          <span>{ TribeA }</span>
-          <div class="tips"><i class="fa fa-user" aria-hidden="true"></i>
-            <span class="tipstext">21 member</span>
-          </div>
-          <div class="tips"><i class="fa fa-trash" aria-hidden="true"></i>
-            <span class="tipstext">Delete</span>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="user">
-          <span>{ TribeB }</span>
-          <div class="tips"><i class="fa fa-user" aria-hidden="true"></i>
-            <span class="tipstext">21 member</span>
-          </div>
-          <div class="tips"><i class="fa fa-trash" aria-hidden="true"></i>
-            <span class="tipstext">Delete</span>
-          </div>
-        </div>
-      </div>
-      <div class="card messageCard">
-        <div class="user">
-          <span>{ TribeC }</span>
-          <div class="tips"><i class="fa fa-user" aria-hidden="true"></i>
-            <span class="tipstext">21 member</span>
-          </div>
-          <div class="tips"><i class="fa fa-trash" aria-hidden="true"></i>
-            <span class="tipstext">Delete</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
   <script src="./js/user.js"></script>
 </body>
