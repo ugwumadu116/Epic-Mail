@@ -455,8 +455,84 @@ html {
     color: #FF6D00;
     transform: scale(0.9, 0.9);
   }
-
-  
+  #profile{
+    margin: 70px 0px 0px 220px;
+  }
+  #profile  .container{
+    display: flex;
+    flex-direction: column;
+  }
+  #profile  .container .card{
+    padding: 10px;
+    line-height: 30px;
+    border: 1px solid #e6e6e6;
+    border-bottom-width: 1px;
+  }
+  #profile  .container .card .userimg{
+    display: flex;
+    justify-content: center;
+  }
+  #profile  .container .card .user{
+    display: flex;
+  }
+  #profile  .container .card .user i{
+  color: #FF6D00;
+  padding: 20px;
+  }
+  #profile  .container .card .user span{
+    padding: 17px 0;
+  }
+  #profile  .container .card .userimg img {
+    margin: 10px auto 0 auto;
+    width: 150px;
+    border-radius: 50%;
+    height: 150px;
+  }  
+  #password {
+    margin: 100px 300px;
+  }
+  #password .formLogo{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+    font-size: 20px;
+  }
+  #password  .formLogo h2 {
+    font-size: 20px;
+    color: #FF6D00;
+  }
+  #password .formGroup {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+  #password input {
+    width: 655px;
+    padding: 0 20px;
+    text-decoration: none;
+    line-height: 50px;
+    font-size: 15px;
+    border: 1px solid #e6e6e6;
+    border-bottom-width: 3px;
+  }
+  #password .submitForm{
+    display: flex;
+    justify-content: center;
+  }
+  #password .submitForm button {
+    color: #fdf9f8;
+    border: 2px solid #FF6D00;
+    background: #FF6D00;
+    width: 200px;
+    padding: 5px 0;
+    margin-bottom: 0px;
+    transition: all 0.5s ease-in-out;
+  }
+  #password .submitForm button:hover{
+    background: transparent;
+    color: #FF6D00;
+    transform: scale(0.9, 0.9);
+  }
   @media (max-width: 750px) {    
     #header .bars {
         flex: 0.8;
@@ -467,6 +543,9 @@ html {
     #group {
       margin: 70px 40px;
     }
+    #profile {
+      margin: 60px 10px;
+    }
     #groupInbox {
       margin: 70px 40px;
     }
@@ -475,6 +554,9 @@ html {
     }
     #addGroup {
       margin: 60px 40px;
+    }
+    #password {
+      margin: 50px 40px;
     }
   }
   
