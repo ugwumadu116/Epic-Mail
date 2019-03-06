@@ -1,480 +1,518 @@
 html {
-    scroll-behavior: smooth;
-  }
-  * {
-    box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
-    font-size: 15px;
-  }
-  button {
-    cursor: pointer;
-  }
-  body {
-    margin: 0px;
-    padding: 0px;
-    font-family: "Space Mono", "Muli", sans-serif;
-  }
-  a {
-    text-decoration: none;
-    color: none;
-  }
-  textarea:focus, input:focus{
-    outline: none;
-  }
-  p {
-    margin: 0px;
-  }
-  li {
-    list-style: none;
-  }
-  #header {
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    background:  #FF6D00;
-    height: 50px;
-    display: flex;
-  }
-  #header .bars {
-    flex: 0.6;
-    color: #fff;
-  }
-  #header .searchArea {
-    flex: 3;
-  }
-  
-  #header .bell span {
-    position: relative;
-    left: -10px;
-    top: -15px;
-    background: #002f4b;
-    padding: 3px;
-    border-radius: 50%;
-    color: #f4f6f9;
-  }
-  #header .fa-bell-o {
-    margin: 10px;
-    font-size: 25px;
-    cursor: pointer;
-    color: #fff;
-  }
-  #header .fa-bars {
-    font-size: 20px;
-    padding: 10px;
-  }
-  #header .searchArea .fa-search{
-    font-size: 20px;
-    margin-top: 10px;
-    color: #fff;
-  }
-  #header .searchArea input{
-    background: transparent;
-    padding: 0 10px;
-    line-height: 30px;
-    font-size: 15px;
-    border: 1px solid #e6e6e6;
-    border-radius: 30px; 
-    width: 90%;
-    transition: all 0.5s ease-in-out
-  }
-  #header .searchArea input:hover{
-    background: #F4F6F9;
-  }
-  #sidenav::-webkit-scrollbar { 
-    display: none;
+  scroll-behavior: smooth;
 }
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-size: 15px;
+}
+button {
+  cursor: pointer;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Space Mono", "Muli", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: none;
+}
+textarea:focus, input:focus{
+  outline: none;
+}
+p {
+  margin: 0px;
+}
+li {
+  list-style: none;
+}
+#header {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  background:  #FF6D00;
+  height: 50px;
+  display: flex;
+}
+#header .bars {
+  flex: 0.6;
+  color: #fff;
+}
+#header .searchArea {
+  flex: 3;
+}
+
+#header .bell span {
+  position: relative;
+  left: -10px;
+  top: -15px;
+  background: #002f4b;
+  padding: 3px;
+  border-radius: 50%;
+  color: #f4f6f9;
+}
+#header .fa-bell-o {
+  margin: 10px;
+  font-size: 25px;
+  cursor: pointer;
+  color: #fff;
+}
+#header .fa-bars {
+  font-size: 20px;
+  padding: 10px;
+}
+#header .searchArea .fa-search{
+  font-size: 20px;
+  margin-top: 10px;
+  color: #fff;
+}
+#header .searchArea input{
+  background: transparent;
+  padding: 0 10px;
+  line-height: 30px;
+  border: 1px solid #e6e6e6;
+  border-radius: 30px; 
+  width: 90%;
+  transition: all 0.5s ease-in-out
+}
+#overlay2 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 180px;
+  right: 0;
+  bottom: 0;
+  background-color: #A9A9A9;
+  z-index: 2;
+  opacity: 0.9;
+  cursor: pointer;
+}
+#header .searchArea input:hover{
+  background: #F4F6F9;
+}
+#sidenav::-webkit-scrollbar { 
+  display: none;
+}
+#sidenav {
+  background: #fff;
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+#sidenav .fa-times {
+  display: none;
+  color: red;
+  float: right;
+  font-size: 20px;
+  margin: 10px;
+  transition: all 0.3s ease-in-out;
+}
+#sidenav .fa-times:hover {
+  color: #a9a9a9;
+  transform: scale(0.9, 0.9);
+}
+#sidenav .topic a{
+  color: #002f4b;
+  font-size: 22px;
+}
+#sidenav .topic {
+  color: #002f4b;
+  font-family: "Space Mono";
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+#sidenav .username {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+#sidenav .userImg {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto 0 auto;
+  width: 90px;
+  border-radius: 50%;
+  height: 90px;
+  background: url(../img/pass2.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#sidenav nav a {
+  display: block;
+  text-decoration: none;
+  color: #002f4b;
+  font-size: 15px;
+  margin-bottom: 10px;
+  padding: 15px 30px;
+  font-weight: 300;
+  transition: all 0.3s ease-in-out;
+}  
+#sidenav nav a:hover {
+  background: #FF6D00;
+  border-left: 5px solid #92cf48;
+  padding: 15px 30px 15px 25px;
+}  
+#sidenav nav a:hover i {
+  color: #002f4b;
+}  
+#sidenav nav {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+}  
+#sidenav nav .active {
+  background: #FF6D00;
+  border-left: 5px solid #92cf48;
+  padding: 15px 30px 15px 25px;
+}  
+#sidenav nav .active i {
+  color: #002f4b;
+}  
+#sidenav nav i {
+  margin-right: 0.8rem;
+  color: #FF6D00;
+  font-size: 1.4rem;
+  display: inline-block;
+  width: 30px;
+  position: relative;
+  top: 3px;
+}
+#compose  {
+  margin: 55px 0px 0px 200px;
+  background: white;
+}
+#compose .formLogo{
+  display: flex;
+  background: #002f4b;
+  color: #fff;
+  padding: 10px;
+}
+#compose .formLogo h3{
+  flex: 1
+}
+#compose .formLogo .tips{
+  position: relative;
+}
+#compose .formLogo .tips i{
+  font-size: 20px;
+  color: #FF6D00;
+  cursor: pointer;
+}
+#compose .formLogo .tips .tipstext{
+  visibility: hidden;
+  padding: 3px;
+  background-color: #FF6D00;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 13px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+#compose .formLogo .tips:hover .tipstext{
+  visibility: visible;
+}
+#compose .formGroup {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+#compose textarea {
+  width: 785px;
+  font-size: 15px;
+  padding: 0 20px;
+  border: 3px solid #e6e6e6;
+  border-bottom-width: 3px;
+}
+#compose input {
+  width: 785px;
+  padding: 0 20px;
+  line-height: 50px;
+  font-size: 15px;
+  height: 50px;
+  border: 1px solid #e6e6e6;
+  border-bottom-width: 3px;
+}
+#compose .submitForm {
+  display: flex;
+  justify-content: center;
+}
+#compose .submitForm button {
+  color: #fdf9f8;
+  border: 2px solid #FF6D00;
+  background: #FF6D00;
+  width: 200px;
+  padding: 10px 0;
+  margin: 10px;
+  margin-bottom: 0px;
+  transition: all 0.5s ease-in-out;
+}
+#compose .submitForm button:hover{
+  background: #002f4b;
+  transform: scale(0.9, 0.9);
+}
+#inbox,
+#sent{
+  margin: 55px 0px 0px 200px;
+}
+#inbox .container .card,
+#sent  .container .card{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  line-height: 30px;
+  border: 1px solid #e6e6e6;
+  border-bottom-width: 3px;
+  cursor: pointer;
+}
+#inbox .container .card .user,
+#sent  .container .card .user{
+  display: flex;
+}
+#inbox .container .card .user > span:first-child,
+#sent  .container .card .user > span:first-child{
+  flex: 1;
+  font-size: 20px;
+}
+#inbox .container .card .user i,
+#sent  .container .card .user i{
+  color: #FF6D00;
+  font-size: 20px;
+}
+#sent .container .card .status{
+  display: flex;
+  color: #FF6D00;
+}
+#sent .container .card .status span{
+  flex: 1;
+}
+#sent .container .card .status i{
+  font-size: 20px;
+}
+#output{
+  margin: 55px 0px 0px 200px;
+}
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#text{
+  position: absolute;
+  width: auto;
+  height: 500px;
+  line-height: 30px;
+  top: 50%;
+  left: 50%;
+  color: black;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  background: white;
+  box-shadow: 0 5px 15px rgb(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding: 10px;
+  overflow-y: scroll;
+}
+#text .header{
+  display: flex;
+}
+#text .header h4{
+  flex: 1;
+  font-size: 20px;
+}
+#text .subject{
+  display: flex;
+  font-size: 20px;
+}
+#text .subject .fa-trash{
+  color: #FF6D00;
+}
+#text .subject h5{
+  flex: 1;
+  font-size: 15px;
+}
+#text .subject div{
+  margin-left: 20px;
+}
+#text .subject .tips{
+  position: relative;
+}
+#text .subject .tips i{
+  font-size: 20px;
+}
+
+#text .subject .tips .tipstext {
+  visibility: hidden;
+  padding: 3px;
+  background-color: #002f4b;
+  color: #FF6D00;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 13px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}  
+#text .subject .tips:hover .tipstext {
+  visibility: visible;
+}
+#draft{
+  margin: 55px 0px 0px 200px;
+}
+#draft .container .card{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  line-height: 30px;
+  border: 1px solid #e6e6e6;
+  border-bottom-width: 3px;
+  cursor: pointer;
+}
+#draft .container .card .user{
+  display: flex
+}
+#draft .container .card .user > span:first-child{
+  flex: 1;
+  font-size: 20px;
+}
+#draft .container .card .user i{
+  color: #FF6D00;
+  font-size: 20px;
+}
+#draft .container .card .status{
+  display: flex;
+  color: #FF6D00;
+}
+#draft .container .card .status span{
+  flex: 1;
+}
+#draft .container .card .status i{
+  font-size: 20px;
+}
+#draftText{
+  position: absolute;
+  width: auto;
+  height: 500px;
+  line-height: 30px;
+  top: 50%;
+  left: 50%;
+  color: black;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  background: white;
+  box-shadow: 0 5px 15px rgb(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding: 10px;
+  overflow-y: scroll;
+}
+#draftText .formLogo{
+  display: flex;
+  background: #002f4b;
+  color: #fff;
+  padding: 10px;
+}
+#draftText .formGroup {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+#draftText textarea {
+  width: auto;
+  font-size: 15px;
+  padding: 0 20px;
+  border: 3px solid #e6e6e6;
+  border-bottom-width: 3px;
+}
+#draftText input {
+  width: 785px;
+  padding: 0 20px;
+  line-height: 50px;
+  font-size: 15px;
+  height: 50px;
+  border: 1px solid #e6e6e6;
+  border-bottom-width: 3px;
+}
+#draftText .submitForm {
+  display: flex;
+  justify-content: center;
+}
+#draftText .submitForm button {
+  color: #fdf9f8;
+  border: 2px solid #FF6D00;
+  background: #FF6D00;
+  width: 200px;
+  padding: 10px 0;
+  margin: 10px;
+  margin-bottom: 0px;
+  transition: all 0.5s ease-in-out;
+}
+#draftText .submitForm button:hover{
+  background: #002f4b;
+  transform: scale(0.9, 0.9);
+}
+
+@media (max-width: 750px) {
   #sidenav {
-    background: #fff;
-    position: fixed;
-    overflow-y: scroll;
-    top: 0;
-    left: 0;
-    bottom: 0;
+    width: 0px;
   }
-  #sidenav .fa-times {
-    display: none;
-    color: red;
-    float: right;
-    font-size: 20px;
-    margin: 10px;
-    transition: all 0.3s ease-in-out;
-  }
-  #sidenav .fa-times:hover {
-    color: #a9a9a9;
-    transform: scale(0.9, 0.9);
-  }
-  #sidenav .topic a{
-    color: #002f4b;
-    font-size: 22px;
-  }
-  #sidenav .topic {
-    color: #002f4b;
-    font-family: "Space Mono";
-    font-size: 22px;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  #sidenav .username {
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  #sidenav .userImg {
-    display: flex;
-    justify-content: center;
-    margin: 30px auto 0 auto;
-    width: 90px;
-    border-radius: 50%;
-    height: 90px;
-    background: url(../img/pass2.jpg) no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
-  #sidenav nav a {
-    display: block;
-    text-decoration: none;
-    color: #002f4b;
-    font-size: 15px;
-    margin-bottom: 10px;
-    padding: 15px 30px;
-    font-weight: 300;
-    transition: all 0.3s ease-in-out;
-  }  
-  #sidenav nav a:hover {
-    background: #FF6D00;
-    border-left: 5px solid #92cf48;
-    padding: 15px 30px 15px 25px;
-  }  
-  #sidenav nav a:hover i {
-    color: #002f4b;
-  }  
-  #sidenav nav {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-  }  
-  #sidenav nav .active {
-    background: #FF6D00;
-    border-left: 5px solid #92cf48;
-    padding: 15px 30px 15px 25px;
-  }  
-  #sidenav nav .active i {
-    color: #002f4b;
-  }  
-  #sidenav nav i {
-    margin-right: 0.8rem;
-    color: #FF6D00;
-    font-size: 1.4rem;
-    display: inline-block;
-    width: 30px;
-    position: relative;
-    top: 3px;
-  }
-  #compose  {
-    margin: 55px 0px 0px 200px;
-    background: white;
-  }
-  #compose .formLogo{
-    display: flex;
-    background: #002f4b;
-    color: #fff;
-    padding: 10px;
-  }
-  #compose .formLogo h3{
-    flex: 1
-  }
-  #compose .formLogo .tips{
-    position: relative;
-  }
-  #compose .formLogo .tips i{
-    font-size: 20px;
-    color: #FF6D00;
-  }
-  #compose .formLogo .tips .tipstext{
-    visibility: hidden;
-    padding: 3px;
-    background-color: #FF6D00;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    font-size: 13px;
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: 50%;
-    margin-left: -60px;
-  }
-  #compose .formLogo .tips:hover .tipstext{
-    visibility: visible;
-  }
-  #compose .formGroup {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-  }
-  #compose textarea {
-    width: 785px;
-    font-size: 15px;
-    padding: 0 20px;
-    border: 3px solid #e6e6e6;
-    border-bottom-width: 3px;
-  }
-  #compose input {
-    width: 785px;
-    padding: 0 20px;
-    line-height: 50px;
-    font-size: 15px;
-    height: 50px;
-    border: 1px solid #e6e6e6;
-    border-bottom-width: 3px;
-  }
-  #compose .submitForm {
-    display: flex;
-    justify-content: center;
-  }
-  #compose .submitForm button {
-    color: #fdf9f8;
-    border: 2px solid #FF6D00;
-    background: #FF6D00;
-    width: 200px;
-    padding: 10px 0;
-    margin: 10px;
-    margin-bottom: 0px;
-    transition: all 0.5s ease-in-out;
-  }
-  #compose .submitForm button:hover{
-    background: #002f4b;
-    transform: scale(0.9, 0.9);
+  #compose {
+    margin: 70px 0px;
   }
   #inbox,
-  #sent{
-    margin: 55px 0px 0px 200px;
+  #draft,
+  #sent {
+    margin: 70px 0px;
   }
-  #inbox .container .card,
-  #sent  .container .card{
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    line-height: 30px;
-    border: 1px solid #e6e6e6;
-    border-bottom-width: 3px;
-  }
-  #inbox .container .card .user,
-  #sent  .container .card .user{
-    display: flex
-  }
-  #inbox .container .card .user > span:first-child,
-  #sent  .container .card .user > span:first-child{
-    flex: 1;
-    font-size: 20px;
-  }
-  #inbox .container .card .user i,
-  #sent  .container .card .user i{
-    color: #FF6D00;
-    font-size: 20px;
-  }
-  #sent .container .card .status{
-    display: flex;
-    color: #FF6D00;
-  }
-  #sent .container .card .status span{
-    flex: 1;
-  }
-  #sent .container .card .status i{
-    font-size: 20px;
-  }
-  #output{
-    margin: 55px 0px 0px 200px;
-  }
-  #overlay {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2;
-    cursor: pointer;
-  }
-  
-  #text{
-    position: absolute;
-    width: auto;
-    height: 500px;
-    line-height: 30px;
-    top: 50%;
-    left: 50%;
-    color: black;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    background: white;
-    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.25);
-    border-radius: 5px;
-    padding: 10px;
-    overflow-y: scroll;
-  }
-  #text .header{
-    display: flex;
-  }
-  #text .header h4{
-    flex: 1;
-    font-size: 20px;
-  }
-  #text .subject{
-    display: flex;
-    font-size: 20px;
-  }
-  #text .subject .fa-trash{
-    color: #FF6D00;
-  }
-  #text .subject h5{
-    flex: 1;
-    font-size: 15px;
-  }
-  #text .subject div{
-    margin-left: 20px;
-  }
-  #text .subject .tips{
-    position: relative;
-  }
-  #text .subject .tips i{
-    font-size: 20px;
-  }
-  
-  #text .subject .tips .tipstext {
-    visibility: hidden;
-    padding: 3px;
-    background-color: #002f4b;
-    color: #FF6D00;
-    text-align: center;
-    border-radius: 6px;
-    font-size: 13px;
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: 50%;
-    margin-left: -60px;
-  }  
-  #text .subject .tips:hover .tipstext {
-    visibility: visible;
-  }
-  #draft{
-    margin: 55px 0px 0px 200px;
-  }
-  #draft .container .card{
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    line-height: 30px;
-    border: 1px solid #e6e6e6;
-    border-bottom-width: 3px;
-  }
-  #draft .container .card .user{
-    display: flex
-  }
-  #draft .container .card .user > span:first-child{
-    flex: 1;
-    font-size: 20px;
-  }
-  #draft .container .card .user i{
-    color: #FF6D00;
-    font-size: 20px;
-  }
-  #draft .container .card .status{
-    display: flex;
-    color: #FF6D00;
-  }
-  #draft .container .card .status span{
-    flex: 1;
-  }
-  #draft .container .card .status i{
-    font-size: 20px;
-  }
+  #text,
   #draftText{
-    position: absolute;
-    width: auto;
-    height: 500px;
-    line-height: 30px;
-    top: 50%;
-    left: 50%;
-    color: black;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    background: white;
-    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.25);
-    border-radius: 5px;
-    padding: 10px;
-    overflow-y: scroll;
-  }
-  #draftText .formLogo{
-    display: flex;
-    background: #002f4b;
-    color: #fff;
-    padding: 10px;
-  }
-  #draftText .formGroup {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-  }
-  #draftText textarea {
-    width: auto;
-    font-size: 15px;
-    padding: 0 20px;
-    border: 3px solid #e6e6e6;
-    border-bottom-width: 3px;
-  }
-  #draftText input {
-    width: 785px;
-    padding: 0 20px;
-    line-height: 50px;
-    font-size: 15px;
-    height: 50px;
-    border: 1px solid #e6e6e6;
-    border-bottom-width: 3px;
-  }
-  #draftText .submitForm {
-    display: flex;
-    justify-content: center;
-  }
-  #draftText .submitForm button {
-    color: #fdf9f8;
-    border: 2px solid #FF6D00;
-    background: #FF6D00;
-    width: 200px;
-    padding: 10px 0;
-    margin: 10px;
-    margin-bottom: 0px;
-    transition: all 0.5s ease-in-out;
-  }
-  #draftText .submitForm button:hover{
-    background: #002f4b;
-    transform: scale(0.9, 0.9);
+    width: 400px;
   }
   
-  @media (max-width: 750px) {
-    #sidenav {
-      width: 0px;
-    }
-    #compose {
-      margin: 70px 40px;
-    }
-    #inbox,
-    #draft,
-    #sent {
-      margin: 70px 40px;
-    }
-    #text,
-    #draftText{
-      width: 500px;
-    }
+}
+@media (max-width: 450px) {
+  #header .fa-bars {
+    font-size: 20px;
   }
-  
+  #header .searchArea {
+    flex: 2;
+  }
+  #header .searchArea input{
+    position: relative;
+    top: -25px;
+  }
+  #header .searchArea .fa-search{
+    position: relative;
+    left: -20px;
+    margin-top: 10px;
+  }
+  #text,
+  #draftText{
+    width: 300px;
+    height: 400px;
+  }
+}
