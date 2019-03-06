@@ -72,7 +72,6 @@ html {
     background: transparent;
     padding: 0 10px;
     line-height: 30px;
-    font-size: 15px;
     border: 1px solid #e6e6e6;
     border-radius: 30px; 
     width: 90%;
@@ -194,6 +193,7 @@ html {
   #compose .formLogo .tips i{
     font-size: 20px;
     color: #FF6D00;
+    cursor: pointer;
   }
   #compose .formLogo .tips .tipstext{
     visibility: hidden;
@@ -263,10 +263,11 @@ html {
     line-height: 30px;
     border: 1px solid #e6e6e6;
     border-bottom-width: 3px;
+    cursor: pointer;
   }
   #inbox .container .card .user,
   #sent  .container .card .user{
-    display: flex
+    display: flex;
   }
   #inbox .container .card .user > span:first-child,
   #sent  .container .card .user > span:first-child{
@@ -376,6 +377,7 @@ html {
     line-height: 30px;
     border: 1px solid #e6e6e6;
     border-bottom-width: 3px;
+    cursor: pointer;
   }
   #draft .container .card .user{
     display: flex
@@ -465,16 +467,39 @@ html {
       width: 0px;
     }
     #compose {
-      margin: 70px 40px;
+      margin: 70px 0px;
     }
     #inbox,
     #draft,
     #sent {
-      margin: 70px 40px;
+      margin: 70px 0px;
     }
     #text,
     #draftText{
-      width: 500px;
+      width: 400px;
+    }
+    
+  }
+  @media (max-width: 450px) {
+    #header .fa-bars {
+      font-size: 20px;
+    }
+    #header .searchArea {
+      flex: 2;
+    }
+    #header .searchArea input{
+      position: relative;
+      top: -25px;
+    }
+    #header .searchArea .fa-search{
+      position: relative;
+      left: -20px;
+      margin-top: 10px;
+    }
+    #text,
+    #draftText{
+      width: 300px;
+      height: 400px;
     }
   }
   

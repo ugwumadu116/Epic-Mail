@@ -228,7 +228,7 @@ html {
     display: flex;
   }
   #groupHeader .bars {
-    flex: 1;
+    flex: 0.6;
     color: #fff;
   }
   #groupHeader .searchArea {
@@ -261,44 +261,58 @@ html {
   #groupInbox{
     margin: 55px 0px 0px 200px;
   }
-  #groupInbox .heading{
-    position: fixed;
-    width: auto;
-    color: #fff;
+  
+  #compose  {
+    margin: 55px 0px 0px 200px;
+    background: white;
   }
-  #groupInbox .heading .formGroup {
+  #compose .formLogo{
     display: flex;
-    margin: 5px;
+    background: #002f4b;
+    color: #fff;
+    padding: 10px;
   }
-  #groupInbox .heading textarea {
-    flex: 1;
-    width: auto;    
-    font-size: 12px;
+  #compose .formGroup {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+  #compose textarea {
+    width: 785px;
+    font-size: 15px;
+    padding: 0 20px;
     border: 3px solid #e6e6e6;
     border-bottom-width: 3px;
   }
-  #groupInbox .heading .submitForm {
-    display: flex;
-    justify-content: right;
+  #compose input {
+    width: 785px;
+    padding: 0 20px;
+    line-height: 50px;
+    font-size: 15px;
+    height: 50px;
+    border: 1px solid #e6e6e6;
+    border-bottom-width: 3px;
   }
-  #groupInbox .heading .submitForm button {
+  #compose .submitForm {
+    display: flex;
+    justify-content: center;
+  }
+  #compose .submitForm button {
     color: #fdf9f8;
     border: 2px solid #FF6D00;
     background: #FF6D00;
     width: 200px;
-    margin: 5px;
-    padding: 5px;
+    padding: 10px 0;
+    margin: 10px;
     margin-bottom: 0px;
     transition: all 0.5s ease-in-out;
   }
-  #groupInbox .heading .submitForm button:hover{
+  #compose .submitForm button:hover{
     background: #002f4b;
     transform: scale(0.9, 0.9);
   }
-  #groupInbox .container{
-    height: 60vh;
-    overflow-y: scroll;
-  }
+
+
   #groupInbox .container .card{
     display: flex;
     flex-direction: column;
@@ -306,6 +320,7 @@ html {
     line-height: 30px;
     border: 1px solid #e6e6e6;
     border-bottom-width: 3px;
+    cursor: pointer;
   }
   #groupInbox .container .card .user{
     display: flex
@@ -541,22 +556,26 @@ html {
       width: 0px;
     }
     #group {
-      margin: 70px 40px;
+      margin: 50px 0px;
     }
     #profile {
       margin: 60px 10px;
     }
     #groupInbox {
-      margin: 70px 40px;
+      margin: 70px 0px;
     }
-    #groupInbox .heading textarea {
-        width: 355px;
+    #compose {
+      margin: 70px 0px;
     }
     #addGroup {
       margin: 60px 40px;
     }
     #password {
       margin: 50px 40px;
+    }
+    #text{
+      width: 300px;
+      height: 400px;
     }
   }
   
