@@ -6,16 +6,23 @@ closeNav.addEventListener("click", closeSidebar);
 
 const sidenav = document.querySelector("#sidenav");
 const body = document.getElementsByTagName("body")[0];
+const overlay2 = document.getElementById("overlay2");
+overlay2.addEventListener('click', closeOverlay2);
 
-function callSidebar() {
-    sidenav.style.width = 'auto';
-    closeNav.style.display = "block";
-    body.style.backgroundColor = "#A9A9A9";
-}
-function closeSidebar() {
+function closeOverlay2() {
+    document.getElementById("overlay2").style.display = "none";
     sidenav.style.width = '0';
     closeNav.style.display = "none";
-    body.style.backgroundColor = "#f4f6f9";
+}
+function callSidebar() {
+    document.getElementById("overlay2").style.display = "block";
+    sidenav.style.width = 'auto';
+    closeNav.style.display = "block";
+}
+function closeSidebar() {
+    document.getElementById("overlay2").style.display = "none";
+    sidenav.style.width = '0';
+    closeNav.style.display = "none";
 }
 // Open Email Message
 const messageCard = document.getElementsByClassName('messageCard');

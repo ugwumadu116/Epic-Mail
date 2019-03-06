@@ -21,7 +21,7 @@
             <i class="fa fa-bars" aria-hidden="true"></i>
         </div>
         <div class="searchArea">
-            <h1>Groups you belong</h1>
+            <h1>Settings</h1>
         </div>
     </section>
     <section id="sidenav">
@@ -43,11 +43,11 @@
                 <i class="fa fa-inbox" aria-hidden="true"></i>
                 Inbox
             </a>
-            <a href="./sent.html">
+            <a href="#">
                 <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
                 Sent
             </a>
-            <a class="active" href="./group.html">
+            <a href="./group.html">
                 <i class="fa fa-users" aria-hidden="true"></i>
                 Group
             </a>
@@ -59,54 +59,30 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
                 Profile
             </a>
-            <a href="./setting.html">
+            <a class="active" href="./setting.html">
                 <i class="fa fa-cog" aria-hidden="true"></i>
                 Settings
             </a>
         </nav>
     </section>
-    <section id="group">
-        <div class="container">
-            <a href="./groupemails.html">
-                <div class="card">
-                    <div class="user">
-                        <span>{ TribeA }</span>
-                        <div class="tips"><i class="fa fa-user" aria-hidden="true"></i>
-                            <span class="tipstext">21 member</span>
-                        </div>
-                        <div class="tips"><i class="fa fa-trash" aria-hidden="true"></i>
-                            <span class="tipstext">Delete</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="./groupemails.html">
-                <div class="card">
-                    <div class="user">
-                        <span>{ TribeB }</span>
-                        <div class="tips"><i class="fa fa-user" aria-hidden="true"></i>
-                            <span class="tipstext">21 member</span>
-                        </div>
-                        <div class="tips"><i class="fa fa-trash" aria-hidden="true"></i>
-                            <span class="tipstext">Delete</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="./groupemails.html">
-                <div class="card messageCard">
-                    <div class="user">
-                        <span>{ TribeC }</span>
-                        <div class="tips"><i class="fa fa-user" aria-hidden="true"></i>
-                            <span class="tipstext">21 member</span>
-                        </div>
-                        <div class="tips"><i class="fa fa-trash" aria-hidden="true"></i>
-                            <span class="tipstext">Delete</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
+    <section id="password">
+        <form action="#">
+            <div class="formLogo">
+                <h2>Change password</h2>
+            </div>
+            <div class="formGroup">
+                <input type="text" placeholder="Old password" />
+            </div>
+            <div class="formGroup">
+                <input type="text" placeholder="New password" />
+            </div>
+            <div class="formGroup">
+                <input type="text" placeholder="Confirm password" />
+            </div>
+            <div class="submitForm">
+                <button>Add to group</button>
+            </div>
+        </form>
     </section>
     <script src="./js/user.js"></script>
 </body>
