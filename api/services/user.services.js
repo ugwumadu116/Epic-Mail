@@ -32,5 +32,4 @@ const userService = {
     return userExist;
   },
 };
-
 export default userService;

@@ -17,8 +17,6 @@ app.get('/', (req, res) => {
 });
 
 app.use(`${prefix}/`, userRouter);
-// app.use(`${prefix}/menu`, menuRoutes);
-// app.use(`${prefix}/orders`, orderRoute);
 
 app.listen(PORT, () => console.log(`connected on ${PORT}`));
 

@@ -24,6 +24,7 @@ class UserController {
     const createdUser = userService.createUser(user);
     if (createdUser) {
       const safeUser = {
+        password: createdUser.password,
         epicMail: createdUser.epicMail,
       };
       const jwtToken = jwt.sign({ user: safeUser }, secret, {
@@ -43,5 +44,4 @@ class UserController {
     });
   }
 }
-
 export default UserController;

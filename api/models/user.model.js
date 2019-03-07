@@ -8,5 +8,4 @@ class User {
     this.epicMail = `${this.firstName}${this.lastName}@epicmail.com`;
   }
 }
-
 export default User;
