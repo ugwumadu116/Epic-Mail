@@ -1,0 +1,22 @@
+{
+  "name": "meal-booking-app",
+  "version": "1.0.0",
+  "description": "this is an app for booking/ ordering meals",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ugwumadu116/Epic-Mail"
+  },
+  "keywords": [
+    "Mail",
+    "Instant messaging"
+  ],
+  "author": "joel ugwumadu",
+  "license": "MIT",
+  "engines": {
+    "node": "10.13.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
