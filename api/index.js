@@ -1,7 +1,23 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+
+import userRouter from './routes/user.route';
 
 const app = express();
 dotenv.config();
 
-app.listen(process.env.PORT, () => console.log(`connected on ${process.env.PORT}`));
+app.use(bodyParser.json());
+
+const PORT = process.env.PORT || 3000;
+const prefix = '/api/v1';
+
+app.get('/', (req, res) => {
+  res.send('welcome to Epic-Mail Api');
+});
+
+app.use(`${prefix}/`, userRouter);
+
+app.listen(PORT, () => console.log(`connected on ${PORT}`));
+
+export default app;
