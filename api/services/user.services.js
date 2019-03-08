@@ -10,7 +10,7 @@ const userService = {
       email,
       firstName,
       lastName,
-      password,
+      hashPasword,
     } = user;
     const userEpicMail = `${firstName}${lastName}${epic}`;
     const findUser = this.checkUser(userEpicMail);
@@ -22,7 +22,7 @@ const userService = {
     newUser.email = email;
     newUser.firstName = firstName;
     newUser.lastName = lastName;
-    newUser.password = password;
+    newUser.password = hashPasword;
     newUser.epicMail = userEpicMail;
     userData.user.push(newUser);
     return newUser;
