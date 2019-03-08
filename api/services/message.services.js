@@ -13,6 +13,11 @@ const messageService = {
     const userEmail = messageData.message.filter(mail => mail.senderId === epicMail);
     return userEmail;
   },
+  getSingleEmail(epicMail, id) {
+    const userEmail = messageData.message.find(mail => mail.recieverId === epicMail && mail.id === id);
+    console.log(id);
+    return userEmail;
+  },
 };
 
 export default messageService;
