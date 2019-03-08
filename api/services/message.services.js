@@ -1,8 +1,12 @@
 import messageData from '../utils/dummyMessageData';
 
 const messageService = {
-  getUserEmails(epicMAil) {
-    const userEmail = messageData.message.filter(mail => mail.recieverId === epicMAil);
+  getUserEmails(epicMail) {
+    const userEmail = messageData.message.filter(mail => mail.recieverId === epicMail);
+    return userEmail;
+  },
+  getUnreadEmails(epicMail) {
+    const userEmail = messageData.message.filter(mail => mail.recieverId === epicMail && mail.status === 'sent');
     return userEmail;
   },
 };

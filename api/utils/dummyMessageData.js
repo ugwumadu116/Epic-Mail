@@ -6,7 +6,7 @@ export default {
       subject: 'Welcome to bootcamp',
       message: 'In bootcamp we code!!!',
       senderId: 3,
-      recieverId: 2,
+      recieverId: 'macaulayugwumadu@epicmail.com',
       parentMessageId: 0,
       status: 'sent',
     },
@@ -18,7 +18,7 @@ export default {
       senderId: 1,
       recieverId: 'joelugwumadu2@epicmail.com',
       parentMessageId: 1,
-      status: 'sent',
+      status: 'read',
     },
     {
       id: 3,
