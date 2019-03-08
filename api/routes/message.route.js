@@ -6,4 +6,5 @@ const router = express.Router();
 
 router.get('/', userAuth.validate, MessageController.getEmail);
 router.get('/unread', userAuth.validate, MessageController.getUnreadEmail);
+router.get('/sent', userAuth.validate, MessageController.getSentEmail);
 export default router;
