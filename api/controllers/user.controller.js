@@ -26,22 +26,20 @@ class UserController {
       if (!createdUser) {
         throw new Error('first name and last name already exits');
       }
-      if (createdUser) {
-        const safeUser = {
-          password: createdUser.password,
-          epicMail: createdUser.epicMail,
-        };
-        const jwtToken = jwt.sign({ user: safeUser }, secret, {
-          expiresIn: 86400,
-        });
-        return res.status(201).json({
-          status: 'success',
-          data: [{
-            token: jwtToken,
-            epicmail: safeUser,
-          }],
-        });
-      }
+      const safeUser = {
+        password: createdUser.password,
+        epicMail: createdUser.epicMail,
+      };
+      const jwtToken = jwt.sign({ user: safeUser }, secret, {
+        expiresIn: 86400,
+      });
+      return res.status(201).json({
+        status: 'success',
+        data: [{
+          token: jwtToken,
+          epicmail: safeUser,
+        }],
+      });
     } catch (error) {
       return res.status(500).json({
         status: 'error',
@@ -65,7 +63,6 @@ class UserController {
         throw new Error("Password doesn't match our records");
       }
       const safeUser = {
-        password: user.password,
         epicMail: user.epicMail,
       };
       const jwtToken = jwt.sign({ user: safeUser }, secret, {
