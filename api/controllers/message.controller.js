@@ -74,5 +74,24 @@ class MessageController {
       });
     }
   }
+
+  static async PostAnEmail(req, res) {
+    try {
+      const messageDetails = req.body;
+      const userMails = await messageService.postEmail(req.userData.user.epicMail, messageDetails);
+      if (!userMails) {
+        throw new Error('Mail not sent');
+      }
+      return res.status(201).json({
+        status: 201,
+        message: userMails,
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: 400,
+        message: error.message,
+      });
+    }
+  }
 }
 export default MessageController;
