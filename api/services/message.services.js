@@ -1,4 +1,5 @@
 import messageData from '../utils/dummyMessageData';
+import Messages from '../models/message.model';
 
 const messageService = {
   getUserEmails(epicMail) {
@@ -17,6 +18,34 @@ const messageService = {
     const userEmail = messageData.message.find(mail => mail.recieverId === epicMail && mail.id === id);
     console.log(id);
     return userEmail;
+  },
+  postEmail(epicMail, sentData) {
+    const {
+      subject,
+      message,
+      recieverId,
+    } = sentData;
+    const lastMessageId = messageData.message.length - 1;
+    const currentMessageId = messageData.message[lastMessageId].id;
+    const newMessageId = currentMessageId + 1;
+
+    const date = new Date();
+    const today = date.toLocaleString('en-us', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric',
+    });
+    const newMesage = new Messages();
+    newMesage.id = newMessageId;
+    newMesage.createdOn = today;
+    newMesage.subject = subject;
+    newMesage.message = message;
+    newMesage.senderId = epicMail;
+    newMesage.recieverId = recieverId;
+    newMesage.parentMessageId = lastMessageId + 1;
+    newMesage.status = 'sent';
+    messageData.message.push(newMesage);
+    return newMesage;
   },
 };
 
