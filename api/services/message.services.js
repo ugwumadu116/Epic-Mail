@@ -9,6 +9,10 @@ const messageService = {
     const userEmail = messageData.message.filter(mail => mail.recieverId === epicMail && mail.status === 'sent');
     return userEmail;
   },
+  getSentEmails(epicMail) {
+    const userEmail = messageData.message.filter(mail => mail.senderId === epicMail);
+    return userEmail;
+  },
 };
 
 export default messageService;
