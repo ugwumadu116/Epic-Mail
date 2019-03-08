@@ -54,5 +54,25 @@ class MessageController {
       });
     }
   }
+
+  static async getAnEmail(req, res) {
+    try {
+      const { id } = req.params;
+      const messageId = parseInt(id, 10);
+      const userMails = await messageService.getSingleEmail(req.userData.user.epicMail, messageId);
+      if (!userMails) {
+        throw new Error('No mesage found');
+      }
+      return res.status(200).json({
+        status: 200,
+        message: userMails,
+      });
+    } catch (error) {
+      return res.status(404).json({
+        status: 404,
+        message: error.message,
+      });
+    }
+  }
 }
 export default MessageController;
