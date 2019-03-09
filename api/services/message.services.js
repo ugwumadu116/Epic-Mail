@@ -3,20 +3,23 @@ import Messages from '../models/message.model';
 
 const messageService = {
   getUserEmails(epicMail) {
-    const userEmail = messageData.message.filter(mail => mail.recieverId === epicMail);
+    const userEmail = messageData.message
+      .filter(mail => mail.recieverId === epicMail);
     return userEmail;
   },
   getUnreadEmails(epicMail) {
-    const userEmail = messageData.message.filter(mail => mail.recieverId === epicMail && mail.status === 'sent');
+    const userEmail = messageData.message
+      .filter(mail => mail.recieverId === epicMail && mail.status === 'sent');
     return userEmail;
   },
   getSentEmails(epicMail) {
-    const userEmail = messageData.message.filter(mail => mail.senderId === epicMail);
+    const userEmail = messageData.message
+      .filter(mail => mail.senderId === epicMail);
     return userEmail;
   },
   getSingleEmail(epicMail, id) {
-    const userEmail = messageData.message.find(mail => mail.recieverId === epicMail && mail.id === id);
-    console.log(id);
+    const userEmail = messageData.message
+      .find(mail => mail.recieverId === epicMail && mail.id === id);
     return userEmail;
   },
   postEmail(epicMail, sentData) {
@@ -46,6 +49,14 @@ const messageService = {
     newMesage.status = 'sent';
     messageData.message.push(newMesage);
     return newMesage;
+  },
+
+  deleteSingleEmail(epicMail, id) {
+    const userEmail = messageData.message
+      .find(mail => mail.recieverId === epicMail && mail.id === id);
+    const emailIndex = messageData.message.indexOf(userEmail);
+    const delMail = messageData.message.splice(emailIndex, 1);
+    return delMail;
   },
 };
 

@@ -2,7 +2,7 @@ export default {
   message: [
     {
       id: 1,
-      createdOn: Date.now(),
+      createdOn: 'March 09, 2019',
       subject: 'Welcome to bootcamp',
       message: 'In bootcamp we code!!!',
       senderId: 'joelugwumadu2@epicmail.com',
@@ -12,7 +12,7 @@ export default {
     },
     {
       id: 2,
-      createdOn: Date.now(),
+      createdOn: 'March 08, 2019',
       subject: 'The epic Tower',
       message: 'This where opportunity is evenly distributed!!!',
       senderId: 'macaulayugwumadu@epicmail.com',
@@ -22,7 +22,7 @@ export default {
     },
     {
       id: 3,
-      createdOn: Date.now(),
+      createdOn: 'March 07, 2019',
       subject: 'Factors that affect developers in nigeria',
       message: 'Power supply and access to internet are the major factors',
       senderId: 'macaulayugwumadu@epicmail.com',
