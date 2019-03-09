@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 import userRouter from './routes/user.route';
 import messageRouter from './routes/message.route';
@@ -9,7 +10,7 @@ const app = express();
 dotenv.config();
 
 app.use(bodyParser.json());
-
+app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 const prefix = '/api/v1';
