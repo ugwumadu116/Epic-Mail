@@ -78,7 +78,7 @@ describe('User get message api', () => {
     // expect(result.res.statusCode).to.equal(200);
     // console.log(result.body);
     // // // console.log('joel it is statusCode', result.res.statusCode);
-    console.log('joel it is result.body', result.body);
+    console.log('joel it is result', result);
     // console.log('joel it is result.body.status', result.body.status);
     // console.log('joel it is result.statusCode:', result.res.statusCode);
     expect(result.body.status).to.eq(200);
