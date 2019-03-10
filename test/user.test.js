@@ -70,19 +70,35 @@ const jwtTokent = jwt.sign({ user: safeUser }, 'secret', {
 //   });
 // });
 describe('User get message api', () => {
-  it('GET /messages - User Get all received emails', async () => {
-    const result = await chai
+  // it('GET /messages - User Get all received emails', async () => {
+  //   const result = await chai
+  //     .request(app)
+  //     .get(`${API_PREFIX}/messages`)
+  //     .set('x-auth-token', jwtTokent);
+  //   // expect(result.res.statusCode).to.equal(200);
+  //   // console.log(result.body);
+  //   // // // console.log('joel it is statusCode', result.res.statusCode);
+  //   console.log('joel it is result', result);
+  //   console.log('joel it is result.body.message', result.body.message);
+  //   console.log('joel it is result.body.staus', result.body.status);
+  //   // console.log('joel it is result.body.status', result.body.status);
+  //   // console.log('joel it is result.statusCode:', result.res.statusCode);
+  //   expect(result.body.status).to.eq(200);
+  //   expect(result.body.message).to.not.equal(0);
+  // });
+  it('GET /messages - User Get all received emails', (done) => {
+    chai
       .request(app)
       .get(`${API_PREFIX}/messages`)
-      .set('x-auth-token', jwtTokent);
-    // expect(result.res.statusCode).to.equal(200);
-    // console.log(result.body);
-    // // // console.log('joel it is statusCode', result.res.statusCode);
-    console.log('joel it is result', result);
-    // console.log('joel it is result.body.status', result.body.status);
-    // console.log('joel it is result.statusCode:', result.res.statusCode);
-    expect(result.body.status).to.eq(200);
-    expect(result.body.message).to.not.equal(0);
+      .set('x-auth-token', jwtTokent)
+      .then((res) => {
+        console.log(res.body);
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.eq(200);
+        expect(res.body.message).to.not.equal(0);
+        done();
+      })
+      .catch(err => console.log('POST /auth/signup', err.message));
   });
 });
 
