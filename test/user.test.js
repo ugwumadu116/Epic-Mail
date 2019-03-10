@@ -8,8 +8,8 @@ const { assert, expect, use } = chai;
 use(chaiHTTP);
 
 const API_PREFIX = '/api/v1';
-const newlength = dummyData.user.length + 1;
-beforeEach(async () => {
+// const newlength = dummyData.user.length + 1;
+before(async () => {
   await chai
     .request(app)
     .post(`${API_PREFIX}/auth/signup`)
