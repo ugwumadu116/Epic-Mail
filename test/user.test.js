@@ -75,7 +75,12 @@ describe('User get message api', () => {
       .request(app)
       .get(`${API_PREFIX}/messages`)
       .set('x-auth-token', jwtTokent);
-    // expect(result).to.have.status(200);
+    expect(result.res.statusCode).to.equal(200);
+    // console.log(result.body);
+    // // // console.log('joel it is statusCode', result.res.statusCode);
+    // console.log('joel it is result.body', result.body);
+    // console.log('joel it is result.body.status', result.body.status);
+    // console.log('joel it is result.statusCode:', result.res.statusCode);
     expect(result.body.status).to.eq(200);
     expect(result.body.message).to.not.equal(0);
   });
