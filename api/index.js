@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3001;
 const prefix = '/api/v1';
 
 app.get('/', (req, res) => {
-  res.send('welcome to Epic-Mail Api');
+  res.status(200).send('welcome to Epic-Mail Api');
 });
 
 app.use(`${prefix}/`, userRouter);
