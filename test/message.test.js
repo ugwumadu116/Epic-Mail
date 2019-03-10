@@ -22,6 +22,40 @@ const fakejwtToken = jwt.sign({ user: fakeUser }, 'secret', {
   expiresIn: 86400,
 });
 
+beforeEach(async () => {
+  await chai
+    .request(app)
+    .post(`${API_PREFIX}/auth/signup`)
+    .send({
+      firstName: 'joel',
+      lastName: 'ugwumadu2',
+      email: 'roger@test.com',
+      password: 'password',
+    });
+  await chai
+    .request(app)
+    .post(`${API_PREFIX}/auth/signup`)
+    .send({
+      firstName: 'test',
+      lastName: 'test',
+      email: 'roger2@test.com',
+      password: 'password2',
+    });
+  await chai
+    .request(app)
+    .post(`${API_PREFIX}/auth/login`)
+    .send({
+      epicMail: 'joelugwumadu2@epicmail.com',
+      password: 'password',
+    });
+  await chai
+    .request(app)
+    .post(`${API_PREFIX}/auth/login`)
+    .send({
+      epicMail: 'testtest@epicmail.com',
+      password: 'password2',
+    });
+});
 
 describe('User Messages Endpoint Tests', () => {
   it('GET /messages - User Get all received emails', (done) => {
