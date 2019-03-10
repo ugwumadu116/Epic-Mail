@@ -92,14 +92,13 @@ describe('User get message api', () => {
       .get(`${API_PREFIX}/messages`)
       .set('x-auth-token', jwtTokent)
       .then((res) => {
-        console.log('this will be the res', res);
-        console.log('this will be the res.body', res.body);
+        // console.log('this will be the res', res);
+        // console.log('this will be the res.body', res.body);
         expect(res).to.have.status(200);
         expect(res.body.status).to.eq(200);
         expect(res.body.message).to.not.equal(0);
-        done();
-      })
-      .catch(err => console.log('POST /auth/signup', err.message));
+      });
+    done();
   });
 });
 
