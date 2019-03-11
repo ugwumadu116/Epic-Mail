@@ -22,7 +22,7 @@ const fakejwtToken = jwt.sign({ user: fakeUser }, 'secret', {
   expiresIn: 86400,
 });
 
-beforeEach(async () => {
+before(async () => {
   await chai
     .request(app)
     .post(`${API_PREFIX}/auth/signup`)
@@ -66,179 +66,176 @@ describe('User Messages Endpoint Tests', () => {
       .then((res) => {
         expect(res.body.status).to.eq(200);
         expect(res.body.message).to.not.equal(0);
-        done();
-      })
-      .catch();
-    // done();
-    // .then(done, done);
+      });
+    done();
   });
-  // it('GET /messages/ - User has no recieved emails', (done) => {
-  //   chai
-  //     .request(app)
-  //     .get(`${API_PREFIX}/messages`)
-  //     .set('x-auth-token', fakejwtToken)
-  //     .then((res) => {
-  //       expect(res).to.have.status(404);
-  //       expect(res.body.status).to.eq(404);
-  //       expect(res.body.message).to.equal('No mail found');
-  //     })
-  //     .then(done, done);
-  // });
-  // it('GET /messages - User Fail token Validation Test(Required)', (done) => {
-  //   chai
-  //     .request(app)
-  //     .get(`${API_PREFIX}/messages`)
-  //     .set('x-auth-token', 'jwtToken')
-  //     .then((res) => {
-  //       expect(res).to.have.status(400);
-  //     })
-  //     .then(done, done);
-  // });
-  // it('GET /messages/unread - User Get all unread emails', (done) => {
-  //   chai
-  //     .request(app)
-  //     .get(`${API_PREFIX}/messages/unread`)
-  //     .set('x-auth-token', jwtToken)
-  //     .then((res) => {
-  //       expect(res).to.have.status(200);
-  //       expect(res.body.status).to.eq(200);
-  //       expect(res.body.message).to.not.equal(0);
-  //     })
-  //     .then(done, done);
-  // });
-  // it('GET /messages/unread - User has no unread emails', (done) => {
-  //   chai
-  //     .request(app)
-  //     .get(`${API_PREFIX}/messages/unread`)
-  //     .set('x-auth-token', fakejwtToken)
-  //     .then((res) => {
-  //       expect(res).to.have.status(404);
-  //       expect(res.body.status).to.eq(404);
-  //       expect(res.body.message).to.equal('No unread mail found');
-  //     })
-  //     .then(done, done);
-  // });
-  // it('GET /messages/sent - User Get all sent emails', (done) => {
-  //   chai
-  //     .request(app)
-  //     .get(`${API_PREFIX}/messages/sent`)
-  //     .set('x-auth-token', jwtToken)
-  //     .then((res) => {
-  //       expect(res).to.have.status(200);
-  //       expect(res.body.status).to.eq(200);
-  //       expect(res.body.message).to.not.equal(0);
-  //     })
-  //     .then(done, done);
-  // });
-  // it('GET /messages/sent - User has no sent emails', (done) => {
-  //   chai
-  //     .request(app)
-  //     .get(`${API_PREFIX}/messages/sent`)
-  //     .set('x-auth-token', fakejwtToken)
-  //     .then((res) => {
-  //       expect(res).to.have.status(404);
-  //       expect(res.body.status).to.eq(404);
-  //       expect(res.body.message).to.equal('No sent mail found');
-  //     })
-  //     .then(done, done);
-  // });
-  // it('GET /messages/:id - User Get specific email', (done) => {
-  //   chai
-  //     .request(app)
-  //     .get(`${API_PREFIX}/messages/3`)
-  //     .set('x-auth-token', jwtToken)
-  //     .then((res) => {
-  //       expect(res).to.have.status(200);
-  //       expect(res.body.status).to.eq(200);
-  //       expect(res.body.message).to.not.equal(0);
-  //     })
-  //     .then(done, done);
-  // });
-  // it('GET /messages/sent - User specific email dont exist', (done) => {
-  //   chai
-  //     .request(app)
-  //     .get(`${API_PREFIX}/messages/3`)
-  //     .set('x-auth-token', fakejwtToken)
-  //     .then((res) => {
-  //       expect(res).to.have.status(404);
-  //       expect(res.body.status).to.eq(404);
-  //       expect(res.body.message).to.equal('No mesage found');
-  //     })
-  //     .then(done, done);
-  // });
-  // it('POST /messages/ - User POST email', (done) => {
-  //   chai
-  //     .request(app)
-  //     .post(`${API_PREFIX}/messages`)
-  //     .set('x-auth-token', jwtToken)
-  //     .send({
-  //       subject: 'Roger',
-  //       message: 'Test',
-  //       recieverId: 'rogetest@epicmail.com',
-  //     })
-  //     .then((res) => {
-  //       expect(res).to.have.status(201);
-  //       expect(res.body.status).to.eq(201);
-  //       expect(res.body.message).to.not.equal(0);
-  //     })
-  //     .then(done, done);
-  // });
-  // it('POST /messages/ - User POST email fail validation', (done) => {
-  //   chai
-  //     .request(app)
-  //     .post(`${API_PREFIX}/messages`)
-  //     .set('x-auth-token', jwtToken)
-  //     .send({
-  //       subject: 'Roger',
-  //       message: 'Test',
-  //       recieverId: 'rogetestepicmail.com',
-  //     })
-  //     .then((res) => {
-  //       expect(res).to.have.status(400);
-  //       assert.equal(res.body.status, 'error');
-  //       assert.equal(res.body.type, 'validation');
-  //     })
-  //     .then(done, done);
-  // });
-  // it('POST /messages/ - User POST email fail validation', (done) => {
-  //   chai
-  //     .request(app)
-  //     .post(`${API_PREFIX}/messages`)
-  //     .set('x-auth-token', jwtToken)
-  //     .send({
-  //       subject: 'Roger',
-  //       message: 'Test',
-  //       email: 'rogetest@epicmail.com',
-  //     })
-  //     .then((res) => {
-  //       expect(res).to.have.status(400);
-  //       assert.equal(res.body.status, 'error');
-  //       assert.equal(res.body.type, 'validation');
-  //     })
-  //     .then(done, done);
-  // });
-  // it('DELETE /messages/:id - User DELETE specific email', (done) => {
-  //   chai
-  //     .request(app)
-  //     .delete(`${API_PREFIX}/messages/3`)
-  //     .set('x-auth-token', jwtToken)
-  //     .then((res) => {
-  //       expect(res).to.have.status(200);
-  //       expect(res.body.status).to.eq(200);
-  //       assert.equal(res.body.message, 'Deleted successfully');
-  //     })
-  //     .then(done, done);
-  // });
-  // it('DELETE /messages/:id - User fail to DELETE specific email', (done) => {
-  //   chai
-  //     .request(app)
-  //     .delete(`${API_PREFIX}/messages/33`)
-  //     .set('x-auth-token', fakejwtToken)
-  //     .then((res) => {
-  //       expect(res).to.have.status(404);
-  //       expect(res.body.status).to.eq(404);
-  //       expect(res.body.message).to.equal('No mesage found');
-  //     })
-  //     .then(done, done);
-  // });
+  it('GET /messages/ - User has no recieved emails', (done) => {
+    chai
+      .request(app)
+      .get(`${API_PREFIX}/messages`)
+      .set('x-auth-token', fakejwtToken)
+      .then((res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.status).to.eq(404);
+        expect(res.body.message).to.equal('No mail found');
+      });
+    done();
+  });
+  it('GET /messages - User Fail token Validation Test(Required)', (done) => {
+    chai
+      .request(app)
+      .get(`${API_PREFIX}/messages`)
+      .set('x-auth-token', 'jwtToken')
+      .then((res) => {
+        expect(res).to.have.status(400);
+      });
+    done();
+  });
+  it('GET /messages/unread - User Get all unread emails', (done) => {
+    chai
+      .request(app)
+      .get(`${API_PREFIX}/messages/unread`)
+      .set('x-auth-token', jwtToken)
+      .then((res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.eq(200);
+        expect(res.body.message).to.not.equal(0);
+      });
+    done();
+  });
+  it('GET /messages/unread - User has no unread emails', (done) => {
+    chai
+      .request(app)
+      .get(`${API_PREFIX}/messages/unread`)
+      .set('x-auth-token', fakejwtToken)
+      .then((res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.status).to.eq(404);
+        expect(res.body.message).to.equal('No unread mail found');
+      });
+    done();
+  });
+  it('GET /messages/sent - User Get all sent emails', (done) => {
+    chai
+      .request(app)
+      .get(`${API_PREFIX}/messages/sent`)
+      .set('x-auth-token', jwtToken)
+      .then((res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.eq(200);
+        expect(res.body.message).to.not.equal(0);
+      });
+    done();
+  });
+  it('GET /messages/sent - User has no sent emails', (done) => {
+    chai
+      .request(app)
+      .get(`${API_PREFIX}/messages/sent`)
+      .set('x-auth-token', fakejwtToken)
+      .then((res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.status).to.eq(404);
+        expect(res.body.message).to.equal('No sent mail found');
+      });
+    done();
+  });
+  it('GET /messages/:id - User Get specific email', (done) => {
+    chai
+      .request(app)
+      .get(`${API_PREFIX}/messages/3`)
+      .set('x-auth-token', jwtToken)
+      .then((res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.eq(200);
+        expect(res.body.message).to.not.equal(0);
+      });
+    done();
+  });
+  it('GET /messages/sent - User specific email dont exist', (done) => {
+    chai
+      .request(app)
+      .get(`${API_PREFIX}/messages/3`)
+      .set('x-auth-token', fakejwtToken)
+      .then((res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.status).to.eq(404);
+        expect(res.body.message).to.equal('No mesage found');
+      });
+    done();
+  });
+  it('POST /messages/ - User POST email', (done) => {
+    chai
+      .request(app)
+      .post(`${API_PREFIX}/messages`)
+      .set('x-auth-token', jwtToken)
+      .send({
+        subject: 'Roger',
+        message: 'Test',
+        recieverId: 'rogetest@epicmail.com',
+      })
+      .then((res) => {
+        expect(res).to.have.status(201);
+        expect(res.body.status).to.eq(201);
+        expect(res.body.message).to.not.equal(0);
+      });
+    done();
+  });
+  it('POST /messages/ - User POST email fail validation', (done) => {
+    chai
+      .request(app)
+      .post(`${API_PREFIX}/messages`)
+      .set('x-auth-token', jwtToken)
+      .send({
+        subject: 'Roger',
+        message: 'Test',
+        recieverId: 'rogetestepicmail.com',
+      })
+      .then((res) => {
+        expect(res).to.have.status(400);
+        assert.equal(res.body.status, 'error');
+        assert.equal(res.body.type, 'validation');
+      });
+    done();
+  });
+  it('POST /messages/ - User POST email fail validation', (done) => {
+    chai
+      .request(app)
+      .post(`${API_PREFIX}/messages`)
+      .set('x-auth-token', jwtToken)
+      .send({
+        subject: 'Roger',
+        message: 'Test',
+        email: 'rogetest@epicmail.com',
+      })
+      .then((res) => {
+        expect(res).to.have.status(400);
+        assert.equal(res.body.status, 'error');
+        assert.equal(res.body.type, 'validation');
+      });
+    done();
+  });
+  it('DELETE /messages/:id - User DELETE specific email', (done) => {
+    chai
+      .request(app)
+      .delete(`${API_PREFIX}/messages/3`)
+      .set('x-auth-token', jwtToken)
+      .then((res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.eq(200);
+        assert.equal(res.body.message, 'Deleted successfully');
+      });
+    done();
+  });
+  it('DELETE /messages/:id - User fail to DELETE specific email', (done) => {
+    chai
+      .request(app)
+      .delete(`${API_PREFIX}/messages/33`)
+      .set('x-auth-token', fakejwtToken)
+      .then((res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.status).to.eq(404);
+        expect(res.body.message).to.equal('No mesage found');
+      });
+    done();
+  });
 });
