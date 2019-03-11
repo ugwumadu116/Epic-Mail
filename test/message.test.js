@@ -64,11 +64,10 @@ describe('User Messages Endpoint Tests', () => {
       .get(`${API_PREFIX}/messages`)
       .set('x-auth-token', jwtToken)
       .then((res) => {
-        console.log(res.body);
         expect(res.body.status).to.eq(200);
         expect(res.body.message).to.not.equal(0);
       })
-      .then(done, done);
+      .catch(done());
     // done();
     // .then(done, done);
   });
