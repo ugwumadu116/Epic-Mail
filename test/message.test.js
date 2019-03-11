@@ -68,7 +68,7 @@ describe('User Messages Endpoint Tests', () => {
         expect(res.body.status).to.eq(200);
         expect(res.body.message).to.not.equal(0);
       })
-      .catch(err => done(err));
+      .catch(done());
   });
   it('GET /messages/ - User has no recieved emails', (done) => {
     chai
