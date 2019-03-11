@@ -66,8 +66,9 @@ describe('User Messages Endpoint Tests', () => {
       .then((res) => {
         expect(res.body.status).to.eq(200);
         expect(res.body.message).to.not.equal(0);
+        done();
       })
-      .catch(done());
+      .catch();
     // done();
     // .then(done, done);
   });
