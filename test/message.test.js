@@ -159,7 +159,7 @@ describe('User Messages Endpoint Tests', () => {
       .then((res) => {
         expect(res).to.have.status(404);
         expect(res.body.status).to.eq(404);
-        expect(res.body.message).to.equal('No mesage found');
+        expect(res.body.message).to.equal('No message found');
       });
     done();
   });
@@ -223,18 +223,6 @@ describe('User Messages Endpoint Tests', () => {
         expect(res).to.have.status(200);
         expect(res.body.status).to.eq(200);
         assert.equal(res.body.message, 'Deleted successfully');
-      });
-    done();
-  });
-  it('DELETE /messages/:id - User fail to DELETE specific email', (done) => {
-    chai
-      .request(app)
-      .delete(`${API_PREFIX}/messages/33`)
-      .set('x-auth-token', fakejwtToken)
-      .then((res) => {
-        expect(res).to.have.status(404);
-        expect(res.body.status).to.eq(404);
-        expect(res.body.message).to.equal('No mesage found');
       });
     done();
   });

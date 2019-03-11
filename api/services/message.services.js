@@ -54,12 +54,9 @@ const messageService = {
   deleteSingleEmail(epicMail, id) {
     const userEmail = messageData.message
       .find(mail => mail.recieverId === epicMail && mail.id === id);
-    if (userEmail) {
-      const emailIndex = messageData.message.indexOf(userEmail);
-      const delMail = messageData.message.splice(emailIndex, 1);
-      return delMail;
-    }
-    return false;
+    const emailIndex = messageData.message.indexOf(userEmail);
+    const delMail = messageData.message.splice(emailIndex, 1);
+    return delMail;
   },
 };
 
