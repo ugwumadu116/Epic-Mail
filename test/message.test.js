@@ -65,6 +65,7 @@ describe('User Messages Endpoint Tests', () => {
       .set('x-auth-token', jwtToken)
       .then((res) => {
         // expect(res).to.have.status(200);
+        console.log('res.bodyyyyyyyy:', res.body)
         expect(res.body.status).to.eq(200);
         expect(res.body.message).to.not.equal(0);
       })
