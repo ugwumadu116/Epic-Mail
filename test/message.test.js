@@ -58,18 +58,18 @@ beforeEach(async () => {
 });
 
 describe('User Messages Endpoint Tests', () => {
-  it('GET /messages - User Get all received emails', (done) => {
-    chai
+  it('GET /messages - User Get all received emails', async (done) => {
+    await chai
       .request(app)
       .get(`${API_PREFIX}/messages`)
       .set('x-auth-token', jwtToken)
       .then((res) => {
         // expect(res).to.have.status(200);
-        console.log('res.bodyyyyyyyy:', res.body)
+        // console.log('res.bodyyyyyyyy:', res.body)
         expect(res.body.status).to.eq(200);
         expect(res.body.message).to.not.equal(0);
       })
-      .catch(done());
+      .then(done, done);
   });
   it('GET /messages/ - User has no recieved emails', (done) => {
     chai
