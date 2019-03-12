@@ -101,6 +101,7 @@ describe('User Auth Signup Endpoint Tests', () => {
       .then((res) => {
         expect(res).to.have.status(500);
         assert.equal(res.body.status, 'error');
+        expect(res.body.message).to.equal('first name and last name already exits');
       });
     done();
   });

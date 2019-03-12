@@ -157,7 +157,7 @@ describe('User Messages Endpoint Tests', () => {
   it('DELETE /messages/:id - User fail to DELETE specific email', async () => {
     const result = await chai
       .request(app)
-      .delete(`${API_PREFIX}/messages/33`)
+      .delete(`${API_PREFIX}/messages/xx`)
       .set('x-auth-token', fakejwtToken);
     expect(result).to.have.status(404);
     expect(result.body.status).to.eq(404);
