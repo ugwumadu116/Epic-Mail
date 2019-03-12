@@ -22,149 +22,89 @@ const fakejwtToken = jwt.sign({ user: fakeUser }, 'secret', {
   expiresIn: 86400,
 });
 
-before(async () => {
-  await chai
-    .request(app)
-    .post(`${API_PREFIX}/auth/signup`)
-    .send({
-      firstName: 'joel',
-      lastName: 'ugwumadu2',
-      email: 'roger@test.com',
-      password: 'password',
-    });
-  await chai
-    .request(app)
-    .post(`${API_PREFIX}/auth/signup`)
-    .send({
-      firstName: 'test',
-      lastName: 'test',
-      email: 'roger2@test.com',
-      password: 'password2',
-    });
-  await chai
-    .request(app)
-    .post(`${API_PREFIX}/auth/login`)
-    .send({
-      epicMail: 'joelugwumadu2@epicmail.com',
-      password: 'password',
-    });
-  await chai
-    .request(app)
-    .post(`${API_PREFIX}/auth/login`)
-    .send({
-      epicMail: 'testtest@epicmail.com',
-      password: 'password2',
-    });
-});
 
 describe('User Messages Endpoint Tests', () => {
-  it('GET /messages - User Get all received emails', (done) => {
-    chai
+  it('GET /messages - User Get all received emails', async () => {
+    const result = await chai
       .request(app)
       .get(`${API_PREFIX}/messages`)
-      .set('x-auth-token', jwtToken)
-      .then((res) => {
-        expect(res.body.status).to.eq(200);
-        expect(res.body.message).to.not.equal(0);
-      });
-    done();
+      .set('x-auth-token', jwtToken);
+    expect(result).to.have.status(200);
+    expect(result.body.status).to.eq(200);
+    expect(result.body.message).to.not.equal(0);
   });
-  it('GET /messages/ - User has no recieved emails', (done) => {
-    chai
+  it('GET /messages/ - User has no received emails', async () => {
+    const result = await chai
       .request(app)
       .get(`${API_PREFIX}/messages`)
-      .set('x-auth-token', fakejwtToken)
-      .then((res) => {
-        expect(res).to.have.status(404);
-        expect(res.body.status).to.eq(404);
-        expect(res.body.message).to.equal('No mail found');
-      });
-    done();
+      .set('x-auth-token', fakejwtToken);
+    expect(result).to.have.status(404);
+    expect(result.body.status).to.eq(404);
+    expect(result.body.message).to.equal('No mail found');
   });
-  it('GET /messages - User Fail token Validation Test(Required)', (done) => {
-    chai
+  it('GET /messages - User Fail token Validation Test(Required)', async () => {
+    const result = await chai
       .request(app)
       .get(`${API_PREFIX}/messages`)
-      .set('x-auth-token', 'jwtToken')
-      .then((res) => {
-        expect(res).to.have.status(400);
-      });
-    done();
+      .set('x-auth-token', 'jwtToken');
+    expect(result).to.have.status(400);
   });
-  it('GET /messages/unread - User Get all unread emails', (done) => {
-    chai
+  it('GET /messages/unread - User Get all unread emails', async () => {
+    const result = await chai
       .request(app)
       .get(`${API_PREFIX}/messages/unread`)
-      .set('x-auth-token', jwtToken)
-      .then((res) => {
-        expect(res).to.have.status(200);
-        expect(res.body.status).to.eq(200);
-        expect(res.body.message).to.not.equal(0);
-      });
-    done();
+      .set('x-auth-token', jwtToken);
+    expect(result).to.have.status(200);
+    expect(result.body.status).to.eq(200);
+    expect(result.body.message).to.not.equal(0);
   });
-  it('GET /messages/unread - User has no unread emails', (done) => {
-    chai
+  it('GET /messages/unread - User has no unread emails', async () => {
+    const result = await chai
       .request(app)
       .get(`${API_PREFIX}/messages/unread`)
-      .set('x-auth-token', fakejwtToken)
-      .then((res) => {
-        expect(res).to.have.status(404);
-        expect(res.body.status).to.eq(404);
-        expect(res.body.message).to.equal('No unread mail found');
-      });
-    done();
+      .set('x-auth-token', fakejwtToken);
+    expect(result).to.have.status(404);
+    expect(result.body.status).to.eq(404);
+    expect(result.body.message).to.equal('No unread mail found');
   });
-  it('GET /messages/sent - User Get all sent emails', (done) => {
-    chai
+  it('GET /messages/sent - User Get all sent emails', async () => {
+    const result = await chai
       .request(app)
       .get(`${API_PREFIX}/messages/sent`)
-      .set('x-auth-token', jwtToken)
-      .then((res) => {
-        expect(res).to.have.status(200);
-        expect(res.body.status).to.eq(200);
-        expect(res.body.message).to.not.equal(0);
-      });
-    done();
+      .set('x-auth-token', jwtToken);
+    expect(result).to.have.status(200);
+    expect(result.body.status).to.eq(200);
+    expect(result.body.message).to.not.equal(0);
   });
-  it('GET /messages/sent - User has no sent emails', (done) => {
-    chai
+  it('GET /messages/sent - User has no sent emails', async () => {
+    const result = await chai
       .request(app)
       .get(`${API_PREFIX}/messages/sent`)
-      .set('x-auth-token', fakejwtToken)
-      .then((res) => {
-        expect(res).to.have.status(404);
-        expect(res.body.status).to.eq(404);
-        expect(res.body.message).to.equal('No sent mail found');
-      });
-    done();
+      .set('x-auth-token', fakejwtToken);
+    expect(result).to.have.status(404);
+    expect(result.body.status).to.eq(404);
+    expect(result.body.message).to.equal('No sent mail found');
   });
-  it('GET /messages/:id - User Get specific email', (done) => {
-    chai
+  it('GET /messages/:id - User Get specific email', async () => {
+    const result = await chai
       .request(app)
       .get(`${API_PREFIX}/messages/3`)
-      .set('x-auth-token', jwtToken)
-      .then((res) => {
-        expect(res).to.have.status(200);
-        expect(res.body.status).to.eq(200);
-        expect(res.body.message).to.not.equal(0);
-      });
-    done();
+      .set('x-auth-token', jwtToken);
+    expect(result).to.have.status(200);
+    expect(result.body.status).to.eq(200);
+    expect(result.body.message).to.not.equal(0);
   });
-  it('GET /messages/sent - User specific email dont exist', (done) => {
-    chai
+  it('GET /messages/sent - User specific email dont exist', async () => {
+    const result = await chai
       .request(app)
       .get(`${API_PREFIX}/messages/3`)
-      .set('x-auth-token', fakejwtToken)
-      .then((res) => {
-        expect(res).to.have.status(404);
-        expect(res.body.status).to.eq(404);
-        expect(res.body.message).to.equal('No message found');
-      });
-    done();
+      .set('x-auth-token', fakejwtToken);
+    expect(result).to.have.status(404);
+    expect(result.body.status).to.eq(404);
+    expect(result.body.message).to.equal('No mesage found');
   });
-  it('POST /messages/ - User POST email', (done) => {
-    chai
+  it('POST /messages/ - User POST email', async () => {
+    const result = await chai
       .request(app)
       .post(`${API_PREFIX}/messages`)
       .set('x-auth-token', jwtToken)
@@ -172,16 +112,13 @@ describe('User Messages Endpoint Tests', () => {
         subject: 'Roger',
         message: 'Test',
         recieverId: 'rogetest@epicmail.com',
-      })
-      .then((res) => {
-        expect(res).to.have.status(201);
-        expect(res.body.status).to.eq(201);
-        expect(res.body.message).to.not.equal(0);
       });
-    done();
+    expect(result).to.have.status(201);
+    expect(result.body.status).to.eq(201);
+    expect(result.body.message).to.not.equal(0);
   });
-  it('POST /messages/ - User POST email fail validation', (done) => {
-    chai
+  it('POST /messages/ - User POST email fail validation', async () => {
+    const result = await chai
       .request(app)
       .post(`${API_PREFIX}/messages`)
       .set('x-auth-token', jwtToken)
@@ -189,16 +126,13 @@ describe('User Messages Endpoint Tests', () => {
         subject: 'Roger',
         message: 'Test',
         recieverId: 'rogetestepicmail.com',
-      })
-      .then((res) => {
-        expect(res).to.have.status(400);
-        assert.equal(res.body.status, 'error');
-        assert.equal(res.body.type, 'validation');
       });
-    done();
+    expect(result).to.have.status(400);
+    assert.equal(result.body.status, 'error');
+    assert.equal(result.body.type, 'validation');
   });
-  it('POST /messages/ - User POST email fail validation', (done) => {
-    chai
+  it('POST /messages/ - User POST email fail validation', async () => {
+    const result = await chai
       .request(app)
       .post(`${API_PREFIX}/messages`)
       .set('x-auth-token', jwtToken)
@@ -206,24 +140,27 @@ describe('User Messages Endpoint Tests', () => {
         subject: 'Roger',
         message: 'Test',
         email: 'rogetest@epicmail.com',
-      })
-      .then((res) => {
-        expect(res).to.have.status(400);
-        assert.equal(res.body.status, 'error');
-        assert.equal(res.body.type, 'validation');
       });
-    done();
+    expect(result).to.have.status(400);
+    assert.equal(result.body.status, 'error');
+    assert.equal(result.body.type, 'validation');
   });
-  it('DELETE /messages/:id - User DELETE specific email', (done) => {
-    chai
+  it('DELETE /messages/:id - User DELETE specific email', async () => {
+    const result = await chai
       .request(app)
       .delete(`${API_PREFIX}/messages/3`)
-      .set('x-auth-token', jwtToken)
-      .then((res) => {
-        expect(res).to.have.status(200);
-        expect(res.body.status).to.eq(200);
-        assert.equal(res.body.message, 'Deleted successfully');
-      });
-    done();
+      .set('x-auth-token', jwtToken);
+    expect(result).to.have.status(200);
+    expect(result.body.status).to.eq(200);
+    assert.equal(result.body.message, 'Deleted successfully');
+  });
+  it('DELETE /messages/:id - User fail to DELETE specific email', async () => {
+    const result = await chai
+      .request(app)
+      .delete(`${API_PREFIX}/messages/33`)
+      .set('x-auth-token', fakejwtToken);
+    expect(result).to.have.status(404);
+    expect(result.body.status).to.eq(404);
+    expect(result.body.message).to.equal('No message found');
   });
 });
