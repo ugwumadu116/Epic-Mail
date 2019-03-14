@@ -7,7 +7,7 @@ Epic-Mail is a web app that helps people exchange messages/information over the 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/3bc8d760aceaf1753269/test_coverage)](https://codeclimate.com/github/ugwumadu116/Epic-Mail/test_coverage)
 
 ## Getting Started
-Clone the Repo.
+Clone the Repository.
 -------------
 https://github.com/ugwumadu116/Epic-Mail.git
 
@@ -82,7 +82,7 @@ Base URL: https://peaceful-forest-12339.herokuapp.com
 
 
 ## Built With
-* [Node.js](http://www.nodejs.org/) - Runtime-Enviroment
+* [Node.js](http://www.nodejs.org/) - Runtime-Environment
 
 
 ## GitHub Pages
