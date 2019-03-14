@@ -28,6 +28,7 @@ html {
   li {
     list-style: none;
   }
+  #composeHeader,
   #header {
     position: fixed;
     top: 0px;
@@ -35,6 +36,10 @@ html {
     background:  #FF6D00;
     height: 50px;
     display: flex;
+  }
+  #composeHeader .bars{
+    flex: 1;
+    color: #fff;
   }
   #header .bars {
     flex: 0.6;
@@ -46,9 +51,11 @@ html {
   #header .messageHead {
     flex: 3.5;
   }
+  #composeHeader .bell,
   #header .bell{
     position: relative;
   }
+  #composeHeader .bell .belltext,
   #header .bell .belltext{
     visibility: hidden;
     padding: 3px;
@@ -59,10 +66,12 @@ html {
     z-index: 1;
     margin-left: -100px;
   }
+  #composeHeader .bell:hover .belltext,
   #header .bell:hover .belltext{
     visibility: visible;
   }
   
+  #composeHeader .bell .fa-bell span,
   #header .bell .fa-bell span {
     position: relative;
     left: -10px;
@@ -73,12 +82,14 @@ html {
     color: #fff;
     font-family: "Space Mono";
   }
+  #composeHeader .fa-bell,
   #header .fa-bell {
     margin: 10px;
     font-size: 25px;
     cursor: pointer;
     color: #fff;
   }
+  #composeHeader .fa-bars,
   #header .fa-bars {
     font-size: 20px;
     padding: 10px;
@@ -89,7 +100,7 @@ html {
     color: #fff;
   }
   #header .searchArea input{
-    background: transparent;
+    background: #fff;
     padding: 0 10px;
     line-height: 30px;
     border: 1px solid #e6e6e6;
@@ -191,7 +202,7 @@ html {
     top: 3px;
   }
   #compose  {
-    margin: 55px 0px 0px 200px;
+    margin: 55px 0px 0px 176px;
     background: white;
   }
   #compose .formLogo{
@@ -283,13 +294,17 @@ html {
     flex: 1;
     display: flex;
     height: 50px;    
-    overflow: hidden;
     color: black;
+    overflow: hidden;
   }
   #inbox li .details .content{
     font-size: 13px;
+    flex: 2;
   }
   #inbox li .details .userName{
+    padding-right: 10px;
+  }
+  #inbox li .details .userSubject{
     font-weight: bold;
     padding-right: 10px;
   }
@@ -529,6 +544,9 @@ html {
     #text,
     #draftText{
       width: 400px;
+    }
+    #inbox li .details .content{
+      display: none;
     }
     
   }
