@@ -1,0 +1,330 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Epic-Mail",
+    "description": "Epic-Mail is a web app that helps people exchange messages/information over the internet.",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "contact": {
+      "email": "ugwumadu116@gmail.com"
+    }
+  },
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API Endpoints for users in the system"
+    },
+    {
+      "name": "Messages",
+      "description": "API Endpoints for Users messages in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json",
+    "application/x-www-form-urlencoded"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/auth/signup": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Register a New User in the system",
+        "requestBody": {
+          "description": "Input Data Format",
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "description": "First name of User"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "description": "Last name of User"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "Email of User"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "Password of User"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "400": {
+            "description": "User Registration Validation Error"
+          },
+          "500": {
+            "description": "User Already Registered"
+          },
+          "201": {
+            "description": "New user is Registered"
+          }
+        }
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Log In a Registered User",
+        "requestBody": {
+          "description": "Input Data Format",
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "Email given to User After Registration"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "Password of Registered User"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "400": {
+            "description": "User Login Validation Error"
+          },
+          "500": {
+            "description": "User Does Not Exist"
+          },
+          "200": {
+            "description": "User Logged In"
+          }
+        }
+      }
+    },
+    "/api/v1/messages/": {
+      "get": {
+        "summary": "Get all received emails",
+        "tags": [
+          "Messages"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "401": {
+            "description": "Only Authenticated/No token provided"
+          },
+          "400": {
+            "description": "Only Authenticated/Unauthorized or invalid token"
+          },
+          "404": {
+            "description": "No message found"
+          },
+          "200": {
+            "description": "User successfully gets messages"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Add New message to the system",
+        "tags": [
+          "Messages"
+        ],
+        "requestBody": {
+          "description": "Input Data Format",
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "description": "Email content/message"
+                  },
+                  "subject": {
+                    "type": "string",
+                    "description": "subject of the message"
+                  },
+                  "receiverEmail": {
+                    "type": "string",
+                    "description": "Epic-Mail of user receiving the mail"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "401": {
+            "description": "Only Authenticated Users are Authorized"
+          },
+          "400": {
+            "description": "Validation Error"
+          },
+          "200": {
+            "description": "New message Created"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    },
+    "/api/v1/messages/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of meal that we want to work with",
+          "type": "string"
+        }
+      ],
+      "delete": {
+        "summary": "Delete message with given ID",
+        "tags": [
+          "Messages"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "401": {
+            "description": "Only Authenticated User are Authorized"
+          },
+          "404": {
+            "description": "No message found"
+          },
+          "200": {
+            "description": "Message Deleted"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get Messages with given ID",
+        "tags": [
+          "Messages"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "401": {
+            "description": "Only Authenticated Users are Authorized"
+          },
+          "400": {
+            "description": "Validation Error"
+          },
+          "404": {
+            "description": "Message with the given ID not found"
+          },
+          "200": {
+            "description": "Meal Updated"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    },
+    "/api/v1/messages/unread": {
+      "get": {
+        "summary": "Get all unread messages",
+        "tags": [
+          "Messages"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "401": {
+            "description": "Only Authenticated Users are Authorized"
+          },
+          "200": {
+            "description": "All Unread messages Retrieved"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    },
+    "/api/v1/messages/sent": {
+      "get": {
+        "summary": "Get all sent messages",
+        "tags": [
+          "Messages"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "401": {
+            "description": "Only Authenticated Users are Authorized"
+          },
+          "200": {
+            "description": "All sent messages Retrieved"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "JWT": {
+        "type": "apiKey",
+        "description": "JWT token is received after registering\/login, input format: \"Bearer \\<token\\>\"",
+        "name": "x-auth-token",
+        "in": "header"
+      }
+    }
+  }
+}
