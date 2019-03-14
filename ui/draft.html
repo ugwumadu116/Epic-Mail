@@ -11,8 +11,8 @@
   <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Space+Mono" />
   <link rel="stylesheet" type="text/css" media="screen" href="./css/user.css" />
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
 <body>
@@ -25,22 +25,17 @@
       <input type="text" placeholder="Type here to search" name="" id="">
     </div>
     <div class="bell">
+      <i class="far fa-bell"><span>2</span> </i>
       <a href="./inbox.html">
-        <i class="fa fa-bell-o" aria-hidden="true"><span>2</span> </i>
+        <span class="belltext">2 unread mails</span>
       </a>
     </div>
   </section>
   <section id="sidenav">
     <div id="overlay2"></div>
     <i class="fa fa-times" aria-hidden="true"></i>
-    <div class="topic"><a href="./index.html">Epic-Mail</a></div>
-    <div class="userImg"></div>
-    <div class="username">Joel</div>
+    <div class="topic">Epic-Mail</div>
     <nav>
-      <a href="./index.html">
-        <i class="fa fa-home" aria-hidden="true"></i>
-        Home
-      </a>
       <a href="./compose.html">
         <i class="fa fa-plus" aria-hidden="true"></i>
         Compose
@@ -50,7 +45,7 @@
         Inbox
       </a>
       <a href="./sent.html">
-        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+        <i class="fa fa-paper-plane" aria-hidden="true"></i>
         Sent
       </a>
       <a href="./group.html">
@@ -58,73 +53,72 @@
         Group
       </a>
       <a class="active" href="./draft.html">
-        <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+        <i class="fa fa-file-archive" aria-hidden="true"></i>
         Draft
       </a>
       <a href="./profile.html">
         <i class="fa fa-user" aria-hidden="true"></i>
         Profile
       </a>
-      <a href="./setting.html">
-        <i class="fa fa-cog" aria-hidden="true"></i>
-        Settings
-      </a>
     </nav>
   </section>
   <section id="draft">
     <div class="container">
-      <div class="card messageCard">
+      <div class="card">
         <div class="status">
-          <span>draft</span>
           <i class="fa fa-trash" aria-hidden="true"></i>
         </div>
-        <div class="user">
-          <span>Amaka</span>
-          <span><span>2:30am</span></i></span>
-        </div>
-        <div class="subject">
-          <h4>GIT Version Control</h4>
-        </div>
-        <div class="message">
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Vitae obcaecati officia veritatis laborum expedita recusandae
-          </p>
+        <div class="messageCard">
+          <div class="user">
+            <span>Amaka</span>
+            <span><span>2:30am</span></i></span>
+          </div>
+          <div class="subject">
+            <h4>GIT Version Control</h4>
+          </div>
+          <div class="message">
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Vitae obcaecati officia veritatis laborum expedita recusandae
+            </p>
+          </div>
         </div>
       </div>
-      <div class="card messageCard">
+      <div class="card">
         <div class="status">
-          <span>draft</span>
           <i class="fa fa-trash" aria-hidden="true"></i>
         </div>
-        <div class="user">
-          <span>Babajide</span>
-          <span><span>2:30am</span></i></span>
-        </div>
-        <div class="subject">
-          <h4>Meetup 49.0 Invites</h4>
-        </div>
-        <div class="message">
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Vitae obcaecati officia veritatis laborum expedita recusandae
-          </p>
+        <div class="messageCard">
+          <div class="user">
+            <span>Babajide</span>
+            <span><span>2:30am</span></i></span>
+          </div>
+          <div class="subject">
+            <h4>Meetup 49.0 Invites</h4>
+          </div>
+          <div class="message">
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Vitae obcaecati officia veritatis laborum expedita recusandae
+            </p>
+          </div>
         </div>
       </div>
-      <div class="card messageCard">
+      <div class="card">
         <div class="status">
-          <span>draft</span>
           <i class="fa fa-trash" aria-hidden="true"></i>
         </div>
-        <div class="user">
-          <span>Habib</span>
-          <span><span>2:30am</span></i></span>
-        </div>
-        <div class="subject">
-          <h4>Cancelled Pre-Bootcamp Workshop</h4>
-        </div>
-        <div class="message">
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Vitae obcaecati officia veritatis laborum expedita recusandae
-          </p>
+        <div class="messageCard">
+          <div class="user">
+            <span>Habib</span>
+            <span><span>2:30am</span></i></span>
+          </div>
+          <div class="subject">
+            <h4>Cancelled Pre-Bootcamp Workshop</h4>
+          </div>
+          <div class="message">
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Vitae obcaecati officia veritatis laborum expedita recusandae
+            </p>
+          </div>
         </div>
       </div>
     </div>
