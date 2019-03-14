@@ -88,7 +88,7 @@ describe('User Messages Endpoint Tests', () => {
   it('GET /messages/:id - User Get specific email', async () => {
     const result = await chai
       .request(app)
-      .get(`${API_PREFIX}/messages/3`)
+      .get(`${API_PREFIX}/messages/2`)
       .set('x-auth-token', jwtToken);
     expect(result).to.have.status(200);
     expect(result.body.status).to.eq(200);
@@ -101,7 +101,7 @@ describe('User Messages Endpoint Tests', () => {
       .set('x-auth-token', fakejwtToken);
     expect(result).to.have.status(404);
     expect(result.body.status).to.eq(404);
-    expect(result.body.message).to.equal('No mesage found');
+    expect(result.body.message).to.equal('No message found');
   });
   it('POST /messages/ - User POST email', async () => {
     const result = await chai
@@ -111,11 +111,25 @@ describe('User Messages Endpoint Tests', () => {
       .send({
         subject: 'Roger',
         message: 'Test',
-        recieverId: 'rogetest@epicmail.com',
+        receiverEmail: 'joelugwumadu@epicmail.com',
       });
     expect(result).to.have.status(201);
     expect(result.body.status).to.eq(201);
     expect(result.body.message).to.not.equal(0);
+  });
+  it('POST /messages/ - User POST email fail where receiver is not register', async () => {
+    const result = await chai
+      .request(app)
+      .post(`${API_PREFIX}/messages`)
+      .set('x-auth-token', jwtToken)
+      .send({
+        subject: 'Roger',
+        message: 'Test',
+        receiverEmail: 'joelugwu76u@epicmail.com',
+      });
+    expect(result).to.have.status(400);
+    expect(result.body.status).to.eq(400);
+    expect(result.body.message).to.equal('receiverEmail dont exits');
   });
   it('POST /messages/ - User POST email fail validation', async () => {
     const result = await chai
@@ -125,7 +139,7 @@ describe('User Messages Endpoint Tests', () => {
       .send({
         subject: 'Roger',
         message: 'Test',
-        recieverId: 'rogetestepicmail.com',
+        receiverEmail: 'rogetestepicmail.com',
       });
     expect(result).to.have.status(400);
     assert.equal(result.body.status, 'error');
@@ -148,7 +162,7 @@ describe('User Messages Endpoint Tests', () => {
   it('DELETE /messages/:id - User DELETE specific email', async () => {
     const result = await chai
       .request(app)
-      .delete(`${API_PREFIX}/messages/3`)
+      .delete(`${API_PREFIX}/messages/1`)
       .set('x-auth-token', jwtToken);
     expect(result).to.have.status(200);
     expect(result.body.status).to.eq(200);

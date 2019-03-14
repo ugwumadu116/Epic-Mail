@@ -7,6 +7,8 @@ export default {
       lastName: 'ugwumadu',
       password: 'joel',
       epicMail: 'joelugwumadu@epicmail.com',
+      createdAt: 'Thu Mar 14 2019 15:12:03',
+      updatedAt: 'Thu Mar 14 2019 15:12:03',
     },
     {
       id: 2,
@@ -15,6 +17,8 @@ export default {
       lastName: 'ugwumadu',
       password: 'john',
       epicMail: 'johnugwumadu@epicmail.com',
+      createdAt: 'Thu Mar 14 2019 15:12:03',
+      updatedAt: 'Thu Mar 14 2019 15:12:03',
     },
     {
       id: 3,
@@ -23,6 +27,8 @@ export default {
       lastName: 'ugwumadu',
       password: 'joseph',
       epicMail: 'josephugwumadu@epicmail.com',
+      createdAt: 'Thu Mar 14 2019 15:12:03',
+      updatedAt: 'Thu Mar 14 2019 15:12:03',
     },
   ],
 };

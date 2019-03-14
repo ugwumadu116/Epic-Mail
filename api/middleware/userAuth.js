@@ -12,14 +12,14 @@ class checkAuth {
           message: 'Access denied.No token provided',
         });
       }
-      const deceoded = await jwt.verify(token, process.env.SECRET);
-      if (deceoded) {
-        req.userData = deceoded;
+      const decoded = await jwt.verify(token, process.env.SECRET);
+      if (decoded) {
+        req.userData = decoded;
         next();
       }
     } catch (err) {
       res.status(400).json({
-        message: 'Unauthorised invalid token',
+        message: 'Unauthorized invalid token',
       });
     }
   }

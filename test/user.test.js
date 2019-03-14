@@ -93,10 +93,10 @@ describe('User Auth Signup Endpoint Tests', () => {
       .request(app)
       .post(`${API_PREFIX}/auth/signup`)
       .send({
-        firstName: 'joel',
-        lastName: 'ugwumadu2',
-        email: 'roger@test.com',
-        password: 'password',
+        firstName: 'test',
+        lastName: 'test',
+        email: 'roger2@test.com',
+        password: 'password2',
       })
       .then((res) => {
         expect(res).to.have.status(500);

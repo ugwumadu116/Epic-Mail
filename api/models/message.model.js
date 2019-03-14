@@ -4,8 +4,8 @@ class Message {
     this.createdOn = null;
     this.subject = null;
     this.message = null;
-    this.senderId = null;
-    this.recieverId = null;
+    this.senderEmail = null;
+    this.receiverEmail = null;
     this.parentMessageId = null;
     this.status = 'sent' || 'draft' || 'read';
   }
