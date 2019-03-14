@@ -15,7 +15,6 @@ function closeOverlay2() {
   closeNav.style.display = "none";
 }
 function callSidebar() {
-  console.log("122333")
   document.getElementById("overlay2").style.display = "block";
   sidenav.style.width = 'auto';
   closeNav.style.display = "block";
@@ -26,13 +25,13 @@ function closeSidebar() {
   closeNav.style.display = "none";
 }
 
-// hide inbox
+// hide sent
 const details = document.getElementsByClassName('details');
 
 for (let i = 0; i < details.length; i++) {
   details[i].addEventListener('click', hideInbox);
 }
 function hideInbox() {
-  document.getElementById("inbox").style.display = "none";
+  document.getElementById("sent").style.display = "none";
   document.getElementById("inboxMessage").style.display = "block";
 }
