@@ -52,7 +52,7 @@ class UserMiddleware {
       const schema = {
         subject: Joi.string().required(),
         message: Joi.string().required(),
-        recieverId: Joi.string()
+        receiverEmail: Joi.string()
           .email()
           .required(),
       };

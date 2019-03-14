@@ -65,7 +65,7 @@ class MessageController {
       const userMails = await messageService
         .getSingleEmail(req.userData.user.epicMail, messageId);
       if (!userMails) {
-        throw new Error('No mesage found');
+        throw new Error('No message found');
       }
       return res.status(200).json({
         status: 200,
@@ -84,10 +84,13 @@ class MessageController {
       const messageDetails = req.body;
       const userMails = await messageService
         .postEmail(req.userData.user.epicMail, messageDetails);
-      return res.status(201).json({
-        status: 201,
-        message: userMails,
-      });
+      if (userMails) {
+        return res.status(201).json({
+          status: 201,
+          data: userMails,
+        });
+      }
+      throw new Error('receiverEmail dont exits');
     } catch (error) {
       return res.status(400).json({
         status: 400,

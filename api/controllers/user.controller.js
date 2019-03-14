@@ -15,17 +15,23 @@ class UserController {
         email,
         password,
       } = req.body;
-      const hashPasword = await bcrypt.hash(password, 10);
+      const hashPassword = await bcrypt.hash(password, 10);
       const user = {
         firstName,
         lastName,
         email,
-        hashPasword,
+        hashPassword,
       };
       const createdUser = await userService.createUser(user);
       if (!createdUser) {
         throw new Error('first name and last name already exits');
       }
+      const userDetails = {
+        epicMail: createdUser.epicMail,
+        firstName: createdUser.firstName,
+        lastName: createdUser.lastName,
+        createdAt: createdUser.createdAt,
+      };
       const safeUser = {
         password: createdUser.password,
         epicMail: createdUser.epicMail,
@@ -37,7 +43,7 @@ class UserController {
         status: 'success',
         data: [{
           token: jwtToken,
-          epicmail: safeUser,
+          epicMail: userDetails,
         }],
       });
     } catch (error) {
@@ -60,7 +66,7 @@ class UserController {
       }
       const result = await bcrypt.compare(password, user.password);
       if (!result) {
-        throw new Error("Password doesn't match our records");
+        throw new Error("User details don't match our records");
       }
       const safeUser = {
         epicMail: user.epicMail,

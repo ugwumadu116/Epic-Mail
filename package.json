@@ -36,6 +36,7 @@
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.0",
     "swagger-ui-express": "^4.0.2",
+    "trim-request": "^1.0.6",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
