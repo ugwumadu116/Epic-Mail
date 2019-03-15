@@ -2,7 +2,7 @@ import express from 'express';
 import trimRequest from 'trim-request';
 import userAuth from '../middleware/userAuth';
 import MessageController from '../controllers/message.controller';
-import UserMiddleware from '../middleware/userValidator';
+import MessageMiddleware from '../middleware/messageValidator';
 
 const router = express.Router();
 
@@ -12,8 +12,9 @@ router.get('/sent', userAuth.validate, MessageController.getSentEmail);
 router.get('/:id', userAuth.validate, MessageController.getAnEmail);
 router.post('/',
   trimRequest.body,
-  UserMiddleware.validatePostMail,
   userAuth.validate,
+  MessageMiddleware.validatePostMail,
   MessageController.PostAnEmail);
 router.delete('/:id', userAuth.validate, MessageController.deleteAnEmail);
+
 export default router;

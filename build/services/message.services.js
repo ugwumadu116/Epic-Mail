@@ -7,73 +7,86 @@ exports.default = void 0;
 
 var _dummyMessageData = _interopRequireDefault(require("../utils/dummyMessageData"));
 
+var _dummyUserData = _interopRequireDefault(require("../utils/dummyUserData"));
+
 var _message = _interopRequireDefault(require("../models/message.model"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const messageService = {
   getUserEmails(epicMail) {
-    const userEmail = _dummyMessageData.default.message.filter(mail => mail.recieverId === epicMail);
+    const userEmail = _dummyMessageData.default.message.filter(mail => mail.receiverEmail === epicMail);
 
     return userEmail;
   },
 
   getUnreadEmails(epicMail) {
-    const userEmail = _dummyMessageData.default.message.filter(mail => mail.recieverId === epicMail && mail.status === 'sent');
+    const userEmail = _dummyMessageData.default.message.filter(mail => mail.receiverEmail === epicMail && mail.status === 'unread');
 
     return userEmail;
   },
 
   getSentEmails(epicMail) {
-    const userEmail = _dummyMessageData.default.message.filter(mail => mail.senderId === epicMail);
+    const userEmail = _dummyMessageData.default.message.filter(mail => mail.senderEmail === epicMail);
 
     return userEmail;
   },
 
   getSingleEmail(epicMail, id) {
-    const userEmail = _dummyMessageData.default.message.find(mail => mail.recieverId === epicMail && mail.id === id);
+    const userEmail = _dummyMessageData.default.message.filter(mail => mail.receiverEmail === epicMail || mail.senderEmail === epicMail);
 
-    return userEmail;
+    const foundEmail = userEmail.find(mail => mail.id === id);
+
+    if (foundEmail) {
+      return foundEmail;
+    }
+
+    return false;
   },
 
   postEmail(epicMail, sentData) {
     const {
       subject,
       message,
-      recieverId
+      receiverEmail
     } = sentData;
     const lastMessageId = _dummyMessageData.default.message.length - 1;
     const currentMessageId = _dummyMessageData.default.message[lastMessageId].id;
     const newMessageId = currentMessageId + 1;
-    const date = new Date();
-    const today = date.toLocaleString('en-us', {
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric'
-    });
-    const newMesage = new _message.default();
-    newMesage.id = newMessageId;
-    newMesage.createdOn = today;
-    newMesage.subject = subject;
-    newMesage.message = message;
-    newMesage.senderId = epicMail;
-    newMesage.recieverId = recieverId;
-    newMesage.parentMessageId = lastMessageId + 1;
-    newMesage.status = 'sent';
 
-    _dummyMessageData.default.message.push(newMesage);
+    const findReceiver = _dummyUserData.default.user.find(user => user.epicMail === receiverEmail);
 
-    return newMesage;
+    if (findReceiver) {
+      const newMessage = new _message.default();
+      newMessage.id = newMessageId;
+      newMessage.createdOn = new Date();
+      newMessage.subject = subject;
+      newMessage.message = message;
+      newMessage.senderEmail = epicMail;
+      newMessage.receiverEmail = receiverEmail;
+      newMessage.parentMessageId = 0;
+      newMessage.status = 'unread';
+
+      _dummyMessageData.default.message.push(newMessage);
+
+      return newMessage;
+    }
+
+    return false;
   },
 
   deleteSingleEmail(epicMail, id) {
-    const userEmail = _dummyMessageData.default.message.find(mail => mail.recieverId === epicMail && mail.id === id);
+    const userEmail = _dummyMessageData.default.message.find(mail => mail.senderEmail === epicMail && mail.id === id);
 
-    const emailIndex = _dummyMessageData.default.message.indexOf(userEmail);
+    if (userEmail) {
+      const emailIndex = _dummyMessageData.default.message.indexOf(userEmail);
 
-    const delMail = _dummyMessageData.default.message.splice(emailIndex, 1);
+      const delMail = _dummyMessageData.default.message.splice(emailIndex, 1);
 
-    return delMail;
+      return delMail;
+    }
+
+    return false;
   }
 
 };

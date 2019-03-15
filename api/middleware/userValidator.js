@@ -8,6 +8,7 @@ class UserMiddleware {
         lastName: Joi.string().required(),
         email: Joi.string()
           .email()
+          .regex(/[^@]+@[^\.]+\..+/)
           .required(),
         password: Joi.string()
           .min(7)
@@ -18,7 +19,7 @@ class UserMiddleware {
       return true;
     } catch (err) {
       return res.status(400).json({
-        status: 'error',
+        status: 400,
         message: String(err.details[0].message),
         type: 'validation',
       });
@@ -30,6 +31,7 @@ class UserMiddleware {
       const schema = {
         epicMail: Joi.string()
           .email()
+          .regex(/[^@]+@epicmail.com/)
           .required(),
         password: Joi.string()
           .min(7)
@@ -40,28 +42,7 @@ class UserMiddleware {
       return true;
     } catch (err) {
       return res.status(400).json({
-        status: 'error',
-        message: String(err.details[0].message),
-        type: 'validation',
-      });
-    }
-  }
-
-  static async validatePostMail(req, res, next) {
-    try {
-      const schema = {
-        subject: Joi.string().required(),
-        message: Joi.string().required(),
-        receiverEmail: Joi.string()
-          .email()
-          .required(),
-      };
-      await Joi.validate(req.body, schema);
-      next();
-      return true;
-    } catch (err) {
-      return res.status(400).json({
-        status: 'error',
+        status: '400',
         message: String(err.details[0].message),
         type: 'validation',
       });
