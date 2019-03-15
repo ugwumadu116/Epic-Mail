@@ -79,7 +79,7 @@ class MessageController {
       const userMails = await _message.default.getSingleEmail(req.userData.user.epicMail, messageId);
 
       if (!userMails) {
-        throw new Error('No mesage found');
+        throw new Error('No message found');
       }
 
       return res.status(200).json({
@@ -99,14 +99,14 @@ class MessageController {
       const messageDetails = req.body;
       const userMails = await _message.default.postEmail(req.userData.user.epicMail, messageDetails);
 
-      if (!userMails) {
-        throw new Error('Mail not sent');
+      if (userMails) {
+        return res.status(201).json({
+          status: 201,
+          data: userMails
+        });
       }
 
-      return res.status(201).json({
-        status: 201,
-        message: userMails
-      });
+      throw new Error('receiverEmail dont exits');
     } catch (error) {
       return res.status(400).json({
         status: 400,
@@ -123,14 +123,14 @@ class MessageController {
       const messageId = parseInt(id, 10);
       const userMails = await _message.default.deleteSingleEmail(req.userData.user.epicMail, messageId);
 
-      if (!userMails) {
-        throw new Error('No mesage found');
+      if (userMails) {
+        return res.status(200).json({
+          status: 200,
+          message: 'Deleted successfully'
+        });
       }
 
-      return res.status(200).json({
-        status: 200,
-        message: 'Deleted successfully'
-      });
+      throw new Error('No message found');
     } catch (error) {
       return res.status(404).json({
         status: 404,

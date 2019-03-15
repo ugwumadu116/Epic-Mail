@@ -19,18 +19,20 @@ class checkAuth {
       const token = req.headers['x-auth-token'];
 
       if (!token) {
-        res.status(401).send('Access denied.No token provided');
+        res.status(401).json({
+          message: 'Access denied.No token provided'
+        });
       }
 
-      const deceoded = await _jsonwebtoken.default.verify(token, process.env.SECRET);
+      const decoded = await _jsonwebtoken.default.verify(token, process.env.SECRET);
 
-      if (deceoded) {
-        req.userData = deceoded;
+      if (decoded) {
+        req.userData = decoded;
         next();
       }
-    } catch (error) {
+    } catch (err) {
       res.status(400).json({
-        message: 'Unauthorised invalid token'
+        message: 'Unauthorized invalid token'
       });
     }
   }

@@ -11,21 +11,27 @@ var _default = {
     firstName: 'joel',
     lastName: 'ugwumadu',
     password: 'joel',
-    epicMail: 'joelugwumadu@epicmail.com'
+    epicMail: 'joelugwumadu@epicmail.com',
+    createdAt: 'Thu Mar 14 2019 15:12:03',
+    updatedAt: 'Thu Mar 14 2019 15:12:03'
   }, {
     id: 2,
     email: 'john@gmail.com',
     firstName: 'john',
     lastName: 'ugwumadu',
     password: 'john',
-    epicMail: 'johnugwumadu@epicmail.com'
+    epicMail: 'johnugwumadu@epicmail.com',
+    createdAt: 'Thu Mar 14 2019 15:12:03',
+    updatedAt: 'Thu Mar 14 2019 15:12:03'
   }, {
     id: 3,
     email: 'joseph@gmail.com',
     firstName: 'joseph',
     lastName: 'ugwumadu',
     password: 'joseph',
-    epicMail: 'josephugwumadu@epicmail.com'
+    epicMail: 'josephugwumadu@epicmail.com',
+    createdAt: 'Thu Mar 14 2019 15:12:03',
+    updatedAt: 'Thu Mar 14 2019 15:12:03'
   }]
 };
 exports.default = _default;

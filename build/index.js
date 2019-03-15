@@ -13,6 +13,10 @@ var _bodyParser = _interopRequireDefault(require("body-parser"));
 
 var _cors = _interopRequireDefault(require("cors"));
 
+var _swaggerUiExpress = _interopRequireDefault(require("swagger-ui-express"));
+
+var _swagger = _interopRequireDefault(require("./swagger.json"));
+
 var _user = _interopRequireDefault(require("./routes/user.route"));
 
 var _message = _interopRequireDefault(require("./routes/message.route"));
@@ -24,11 +28,15 @@ const app = (0, _express.default)();
 _dotenv.default.config();
 
 app.use(_bodyParser.default.json());
+app.use(_bodyParser.default.urlencoded({
+  extended: true
+}));
 app.use((0, _cors.default)());
+app.use('/api-docs', _swaggerUiExpress.default.serve, _swaggerUiExpress.default.setup(_swagger.default));
 const PORT = process.env.PORT || 3001;
 const prefix = '/api/v1';
 app.get('/', (req, res) => {
-  res.send('welcome to Epic-Mail Api');
+  res.status(200).send('welcome to Epic-Mail Api');
 });
 app.use(`${prefix}/`, _user.default);
 app.use(`${prefix}/messages`, _message.default);
