@@ -1,7 +1,7 @@
 {
   "name": "Epic-Mail",
   "version": "1.0.0",
-  "description": "this is an app for sending emails",
+  "description": "this is an app that helps people exchange messages/information over the internet",
   "main": "index.js",
   "scripts": {
     "start": "npm run build && npm run duplicate-swagger-docs && node ./build/index.js",
