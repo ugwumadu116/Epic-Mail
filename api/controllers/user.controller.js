@@ -17,13 +17,13 @@ class UserController {
       } = req.body;
       const hashPassword = await bcrypt.hash(password, 10);
       const user = {
-        firstName,
-        lastName,
-        email,
+        firstName: firstName.toLowerCase(),
+        lastName: lastName.toLowerCase(),
+        email: email.toLowerCase(),
         hashPassword,
       };
       const createdUser = await userService.createUser(user);
-      if (!createdUser) {
+      if (Object.keys(createdUser).length === 0) {
         throw new Error('first name and last name already exits');
       }
       const userDetails = {
@@ -37,18 +37,18 @@ class UserController {
         epicMail: createdUser.epicMail,
       };
       const jwtToken = jwt.sign({ user: safeUser }, secret, {
-        expiresIn: 86400,
+        expiresIn: 43200,
       });
       return res.status(201).json({
         status: 'success',
         data: [{
           token: jwtToken,
-          epicMail: userDetails,
+          user: userDetails,
         }],
       });
     } catch (error) {
-      return res.status(500).json({
-        status: 'error',
+      return res.status(409).json({
+        status: 409,
         message: error.message,
       });
     }
@@ -57,13 +57,19 @@ class UserController {
   static async loginUser(req, res) {
     try {
       const {
-        epicMail,
         password,
       } = req.body;
+      const epicMail = req.body.epicMail.toLowerCase();
       const user = await userService.checkUser(epicMail);
       if (!user) {
-        throw new Error('User with that email does not exist');
+        throw new Error("User details don't match our records");
       }
+      const userDetails = {
+        epicMail: user.epicMail,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        createdAt: user.createdAt,
+      };
       const result = await bcrypt.compare(password, user.password);
       if (!result) {
         throw new Error("User details don't match our records");
@@ -72,15 +78,16 @@ class UserController {
         epicMail: user.epicMail,
       };
       const jwtToken = jwt.sign({ user: safeUser }, secret, {
-        expiresIn: 86400,
+        expiresIn: 43200,
       });
       return res.status(200).json({
         status: 'success',
         token: jwtToken,
+        userDetails,
       });
     } catch (error) {
-      return res.status(409).json({
-        status: 'error',
+      return res.status(404).json({
+        status: 404,
         message: error.message,
       });
     }

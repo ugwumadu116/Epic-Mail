@@ -66,7 +66,7 @@ describe('User Auth Signup Endpoint Tests', () => {
       })
       .then((res) => {
         expect(res).to.have.status(400);
-        assert.equal(res.body.status, 'error');
+        assert.equal(res.body.status, 400);
         assert.equal(res.body.type, 'validation');
       });
     done();
@@ -83,7 +83,7 @@ describe('User Auth Signup Endpoint Tests', () => {
       })
       .then((res) => {
         expect(res).to.have.status(400);
-        assert.equal(res.body.status, 'error');
+        assert.equal(res.body.status, 400);
         assert.equal(res.body.type, 'validation');
       });
     done();
@@ -100,7 +100,7 @@ describe('User Auth Signup Endpoint Tests', () => {
       })
       .then((res) => {
         expect(res).to.have.status(500);
-        assert.equal(res.body.status, 'error');
+        assert.equal(res.body.status, 500);
         expect(res.body.message).to.equal('first name and last name already exits');
       });
     done();
@@ -117,7 +117,7 @@ describe('User Auth Login Endpoint Tests', () => {
       })
       .then((res) => {
         expect(res).to.have.status(400);
-        assert.equal(res.body.status, 'error');
+        assert.equal(res.body.status, 400);
         assert.equal(res.body.type, 'validation');
       });
     done();
@@ -132,7 +132,7 @@ describe('User Auth Login Endpoint Tests', () => {
       })
       .then((res) => {
         expect(res).to.have.status(400);
-        assert.equal(res.body.status, 'error');
+        assert.equal(res.body.status, 400);
         assert.equal(res.body.type, 'validation');
       });
     done();
@@ -146,8 +146,8 @@ describe('User Auth Login Endpoint Tests', () => {
         password: 'password',
       })
       .then((res) => {
-        expect(res).to.have.status(409);
-        assert.equal(res.body.status, 'error');
+        expect(res).to.have.status(400);
+        assert.equal(res.body.status, 400);
       });
     done();
   });
@@ -160,7 +160,7 @@ describe('User Auth Login Endpoint Tests', () => {
         password: 'password111',
       })
       .then((res) => {
-        assert.equal(res.body.status, 'error');
+        assert.equal(res.body.status, 400);
       });
     done();
   });

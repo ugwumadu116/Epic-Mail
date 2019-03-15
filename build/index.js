@@ -15,7 +15,7 @@ var _cors = _interopRequireDefault(require("cors"));
 
 var _swaggerUiExpress = _interopRequireDefault(require("swagger-ui-express"));
 
-var _swagger = _interopRequireDefault(require("./swagger.json"));
+var _swagger = _interopRequireDefault(require("../swagger.json"));
 
 var _user = _interopRequireDefault(require("./routes/user.route"));
 
