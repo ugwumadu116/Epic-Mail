@@ -47,7 +47,7 @@ describe('User Messages Endpoint Tests', () => {
       .request(app)
       .get(`${API_PREFIX}/messages`)
       .set('x-auth-token', 'jwtToken');
-    expect(result).to.have.status(400);
+    expect(result).to.have.status(401);
   });
   it('GET /messages/unread - User Get all unread emails', async () => {
     const result = await chai

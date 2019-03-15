@@ -18,7 +18,7 @@ class checkAuth {
         next();
       }
     } catch (err) {
-      res.status(400).json({
+      res.status(401).json({
         message: 'Unauthorized invalid token',
       });
     }
