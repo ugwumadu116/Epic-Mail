@@ -110,7 +110,7 @@ describe('User Messages Endpoint Tests', () => {
     expect(result.body.status).to.eq(200);
     expect(result.body.message).to.not.equal(0);
   });
-  it('GET /messages/ - User has no received emails', async () => {
+  it('GET /messages/ - User has no received emails to get', async () => {
     const result = await chai
       .request(app)
       .get(`${API_PREFIX}/messages`)
