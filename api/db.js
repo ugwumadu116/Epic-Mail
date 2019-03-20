@@ -1,4 +1,4 @@
-import connectDb from './api/connection';
+import connectDb from './connection';
 
 const registeredUserTable = `
 DROP TABLE IF EXISTS users;
@@ -113,7 +113,7 @@ ${userGroupMessageTable}
 ${recipientMessageTable}`;
 
 
-connectDb.query(dbQuery)
+export default () => connectDb.query(dbQuery)
   .then(() => process.exit())
   .catch((err) => {
     console.log(`Error from creating extensions ${err}`);
