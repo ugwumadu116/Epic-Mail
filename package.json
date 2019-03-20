@@ -7,7 +7,6 @@
     "start": "npm run table-schema && npm run build && node ./build/index.js",
     "test": "npm run table-schema && nyc mocha -r esm --exit",
     "dev": "nodemon --exec babel-node ./api/index.js",
-    "table-schema2": "babel-node testDb.js",
     "table-schema": "babel-node db.js",
     "build": "npm run clean && npm run build-babel",
     "clean": "rm -rf build && mkdir build",
