@@ -52,6 +52,7 @@ class UserController {
         createdAt: req.userDetails[0].createdat,
         isadmin: req.userDetails[0].isadmin,
       };
+
       const result = await bcrypt.compare(req.body.password, req.userDetails[0].password);
       if (!result) {
         throw new Error("User details don't match our records password");

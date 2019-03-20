@@ -104,7 +104,6 @@ class MessageController {
       if (req.userData.user.epicMail === req.body.receiverEmail) {
         throw new Error('you cant send mail to yourself');
       }
-
       const sql = 'INSERT INTO message (userid, subject, message, senderemail, receiveremail, createdon, modifieddate, parentmessageid) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *';
       const bindingParameter = [req.myInfos[0].id, subject, message, req.userData.user.epicMail, receiverEmail, d, d, 0];
       const client = await db.connect();

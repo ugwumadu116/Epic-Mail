@@ -1,16 +1,16 @@
 import pg from 'pg';
-import configuration from './configuration/configuration';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const { Pool } = pg;
-let connectionConfig;
-if (process.env.NODE_ENV !== 'production' || process.env.NODE_ENV !== 'test') {
-  connectionConfig = 'development';
-} else if (process.env.NODE_ENV !== 'production') {
-  connectionConfig = 'test';
+let connectionSettings;
+if (process.env.NODE_ENV !== 'production') {
+  connectionSettings = process.env.DB_URL_TEST;
 } else {
-  connectionConfig = 'production';
+  connectionSettings = process.env.DB_URL;
 }
-const connectionSettings = configuration[connectionConfig];
-const db = new Pool(connectionSettings);
+
+const db = new Pool({ connectionSettings });
 
 export default db;

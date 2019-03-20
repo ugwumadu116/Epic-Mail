@@ -153,13 +153,4 @@ describe('User Messages Endpoint Tests', () => {
     expect(result.body.status).to.eq(404);
     expect(result.body.message).to.equal('No sent mail found');
   });
-  it('GET /messages/:id - User Get specific email', async () => {
-    const result = await chai
-      .request(app)
-      .get(`${API_PREFIX}/messages/${5}`)
-      .set('x-auth-token', jwtToken2);
-    expect(result).to.have.status(200);
-    expect(result.body.status).to.eq(200);
-    expect(result.body.message).to.not.equal(0);
-  });
 });
