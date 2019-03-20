@@ -139,7 +139,7 @@ class MessageController {
       if (insertedResult.rowCount === 0) {
         return res.status(400).json({
           status: 400,
-          message: 'YOu cant delete this',
+          message: 'You can not delete this',
         });
       }
       return res.status(200).json({
