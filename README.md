@@ -4,7 +4,6 @@ Epic-Mail is a web app that helps people exchange messages/information over the 
 [![Build Status](https://travis-ci.com/ugwumadu116/Epic-Mail.svg?branch=develop)](https://travis-ci.com/ugwumadu116/Epic-Mail)
 [![Coverage Status](https://coveralls.io/repos/github/ugwumadu116/Epic-Mail/badge.svg?branch=develop)](https://coveralls.io/github/ugwumadu116/Epic-Mail?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3bc8d760aceaf1753269/maintainability)](https://codeclimate.com/github/ugwumadu116/Epic-Mail/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/3bc8d760aceaf1753269/test_coverage)](https://codeclimate.com/github/ugwumadu116/Epic-Mail/test_coverage)
 
 ## Getting Started
 Clone the Repository.

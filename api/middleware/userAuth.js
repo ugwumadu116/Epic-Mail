@@ -11,6 +11,7 @@ class checkAuth {
         res.status(401).json({
           message: 'Access denied.No token provided',
         });
+        return false;
       }
       const decoded = await jwt.verify(token, process.env.SECRET);
       if (decoded) {
