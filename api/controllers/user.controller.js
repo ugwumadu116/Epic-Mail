@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
-import userService from '../services/user.services';
+import db from '../connection';
 
 dotenv.config();
 const secret = process.env.SECRET;
@@ -9,41 +9,30 @@ const secret = process.env.SECRET;
 class UserController {
   static async registerUser(req, res) {
     try {
+      const d = new Date();
       const {
+        epicMail,
         firstName,
         lastName,
-        email,
-        password,
-      } = req.body;
-      const hashPassword = await bcrypt.hash(password, 10);
-      const user = {
-        firstName: firstName.toLowerCase(),
-        lastName: lastName.toLowerCase(),
-        email: email.toLowerCase(),
         hashPassword,
-      };
-      const createdUser = await userService.createUser(user);
-      if (Object.keys(createdUser).length === 0) {
-        throw new Error('first name and last name already exits');
-      }
-      const userDetails = {
-        epicMail: createdUser.epicMail,
-        firstName: createdUser.firstName,
-        lastName: createdUser.lastName,
-        createdAt: createdUser.createdAt,
-      };
+      } = req.userData;
       const safeUser = {
-        password: createdUser.password,
-        epicMail: createdUser.epicMail,
+        hashPassword,
+        epicMail,
       };
       const jwtToken = jwt.sign({ user: safeUser }, secret, {
         expiresIn: 43200,
       });
+      const sql = 'INSERT INTO users (firstname, lastname, epicmail, password, createdat, updatedat) VALUES($1, $2, $3, $4, $5, $6) RETURNING *';
+      const bindingParameter = [firstName, lastName, epicMail, hashPassword, d, d];
+      const client = await db.connect();
+      const insertedResult = await client.query(sql, bindingParameter);
+      client.release();
       return res.status(201).json({
-        status: 'success',
+        status: 201,
         data: [{
+          user: insertedResult.rows,
           token: jwtToken,
-          user: userDetails,
         }],
       });
     } catch (error) {
@@ -56,32 +45,25 @@ class UserController {
 
   static async loginUser(req, res) {
     try {
-      const {
-        password,
-      } = req.body;
-      const epicMail = req.body.epicMail.toLowerCase();
-      const user = await userService.checkUser(epicMail);
-      if (!user) {
-        throw new Error("User details don't match our records");
-      }
       const userDetails = {
-        epicMail: user.epicMail,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        createdAt: user.createdAt,
+        epicMail: req.userDetails[0].epicmail,
+        firstName: req.userDetails[0].firstname,
+        lastName: req.userDetails[0].lastname,
+        createdAt: req.userDetails[0].createdat,
+        isadmin: req.userDetails[0].isadmin,
       };
-      const result = await bcrypt.compare(password, user.password);
+      const result = await bcrypt.compare(req.body.password, req.userDetails[0].password);
       if (!result) {
-        throw new Error("User details don't match our records");
+        throw new Error("User details don't match our records password");
       }
       const safeUser = {
-        epicMail: user.epicMail,
+        epicMail: userDetails.epicMail,
       };
       const jwtToken = jwt.sign({ user: safeUser }, secret, {
         expiresIn: 43200,
       });
       return res.status(200).json({
-        status: 'success',
+        status: 200,
         token: jwtToken,
         userDetails,
       });

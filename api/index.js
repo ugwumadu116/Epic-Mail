@@ -17,7 +17,7 @@ app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const PORT = process.env.PORT || 3001;
-const prefix = '/api/v1';
+const prefix = '/api/v2';
 
 app.get('/', (req, res) => {
   res.status(200).send('welcome to Epic-Mail Api');

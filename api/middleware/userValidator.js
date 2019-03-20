@@ -42,7 +42,7 @@ class UserMiddleware {
       return true;
     } catch (err) {
       return res.status(400).json({
-        status: '400',
+        status: 400,
         message: String(err.details[0].message),
         type: 'validation',
       });
