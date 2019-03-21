@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json';
+import createDb from './db';
 
 import userRouter from './routes/user.route';
 import messageRouter from './routes/message.route';
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 app.use(`${prefix}/`, userRouter);
 app.use(`${prefix}/messages`, messageRouter);
 
+createDb();
 app.listen(PORT, () => console.log(`Welcome ${PORT}`));
 
 export default app;

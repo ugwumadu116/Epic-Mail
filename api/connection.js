@@ -4,13 +4,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const { Pool } = pg;
-let connectionSettings;
-if (process.env.NODE_ENV !== 'production') {
-  connectionSettings = process.env.DB_URL_TEST;
+let connectionString;
+if (process.env.NODE_ENV === 'test') {
+  connectionString = process.env.DB_URL_TEST;
 } else {
-  connectionSettings = process.env.DB_URL;
+  connectionString = process.env.DATABASE_URL;
 }
 
-const db = new Pool({ connectionSettings });
+const db = new Pool({ connectionString });
 
 export default db;
