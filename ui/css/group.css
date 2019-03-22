@@ -96,6 +96,38 @@ html {
   #header .searchArea input:hover{
     background: #F4F6F9;
   }
+  #header .bell{
+    position: relative;
+  }
+  #header .bell .belltext{
+    visibility: hidden;
+    padding: 3px;
+    background-color: #002f4b;
+    color: #FF6D00;
+    font-size: 16px;
+    position: absolute;
+    z-index: 1;
+    margin-left: -100px;
+  }
+  #header .bell:hover .belltext{
+    visibility: visible;
+  }
+  #header .bell .fa-bell span {
+    position: relative;
+    left: -10px;
+    top: -13px;
+    background: #002f4b;
+    padding: 0px 3px;
+    border-radius: 50%;
+    color: #fff;
+    font-family: "Space Mono";
+  }
+  #header .fa-bell {
+    margin: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #fff;
+  }
   #sidenav::-webkit-scrollbar { 
     display: none;
 }
@@ -187,7 +219,7 @@ html {
     top: 3px;
   }
   #group{
-    margin: 5px 0px 0px 186px;
+    margin: 18px 0px 0px 186px;
   }
   #group li{
     display: flex;
@@ -325,7 +357,7 @@ html {
     visibility: visible;
   }
   #state{
-    margin: 70px 0px 0px 186px;
+    margin: 118px 0px 0px 186px;
   }
   #state  .container .card button{
     color: #fdf9f8;

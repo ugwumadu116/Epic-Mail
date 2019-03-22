@@ -42,7 +42,7 @@ html {
     color: #fff;
   }
   #header .bars {
-    flex: 0.6;
+    flex: 1;
     color: #fff;
   }
   #header .searchArea {
@@ -202,7 +202,7 @@ html {
     top: 3px;
   }
   #compose  {
-    margin: 55px 0px 0px 176px;
+    margin: 110px 0px 0px 176px;
     background: white;
   }
   #compose .formLogo{
@@ -280,12 +280,11 @@ html {
   }
   #inbox,
   #sent{
-    margin: 55px 0px 0px 186px;
+    margin: 112px 0px 0px 186px;
   }
   #inbox li{
     display: flex;
     padding: 10px;
-    line-height: 50px;
     border: 1px solid #e6e6e6;
     border-bottom-width: 1.5px;
     cursor: pointer;
@@ -293,24 +292,34 @@ html {
   #inbox li .details{
     flex: 1;
     display: flex;
-    height: 50px;    
+    flex-direction: column;
+    height: 100px;    
     color: black;
     overflow: hidden;
   }
   #inbox li .details .content{
     font-size: 13px;
-    flex: 2;
+    flex: 1;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 20%;
+    overflow-y: hidden;
   }
   #inbox li .details .userName{
+    display: flex;
     padding-right: 10px;
   }
+  #inbox li .details .userName span{
+    flex: 2;
+    font-size: 20px;
+  }
   #inbox li .details .userSubject{
+    padding: 10px 0px;
     font-weight: bold;
-    padding-right: 10px;
   }
   #inbox li .icon{
     display: flex;
-    margin: 20px 5px;
+    margin: 5px;
   }
   #inbox li .icon i{
     font-size: 17px
@@ -416,8 +425,6 @@ html {
     font-size: 13px;
     position: absolute;
     z-index: 1;
-    top: 100%;
-    left: 50%;
     margin-left: -60px;
   } 
   #inbox li .icon .tips:hover .tipstext,
@@ -425,7 +432,7 @@ html {
     visibility: visible;
   }
   #draft{
-    margin: 55px 0px 0px 186px;
+    margin: 118px 0px 0px 186px;
   }
   #inboxMessage{
     display: none;
@@ -544,11 +551,7 @@ html {
     #text,
     #draftText{
       width: 400px;
-    }
-    #inbox li .details .content{
-      display: none;
-    }
-    
+    }    
   }
   @media (max-width: 450px) {
     #header .fa-bars {
