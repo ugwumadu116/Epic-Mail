@@ -48,7 +48,7 @@ class CheckMiddleware {
       const emailCheck = await client.query(sql, bindingParameter);
       client.release();
       if (emailCheck.rowCount === 0) {
-        return res.status(400).json({ error: 'User details don\'t match our records' });
+        return res.status(400).json({ error: 'Epicmail or password is wrong' });
       }
       req.userDetails = emailCheck.rows;
       next();
@@ -80,7 +80,7 @@ class CheckMiddleware {
     }
   }
 
-  static async checkIFMessageExist(req, res, next) {
+  static async checkIfMessageExist(req, res, next) {
     try {
       const { id } = req.params;
       const sql = 'SELECT * from inbox WHERE messageid = $1';
@@ -88,7 +88,7 @@ class CheckMiddleware {
       const client = await db.connect();
       const insertedResult = await client.query(sql, bindingParameter);
       if (insertedResult.rowCount === 0) {
-        return res.status(400).json({ message: 'Invalid message id' });
+        return res.status(404).json({ status: 404, message: 'Message not found' });
       }
       if (insertedResult.rowCount > 0) {
         const sql2 = 'UPDATE inbox SET status = $1 WHERE messageid = $2';
@@ -134,7 +134,7 @@ class CheckMiddleware {
       }
       client.release();
       if (resultOfReceiverEmail.rowCount === 0) {
-        return res.status(400).json({ error: 'Receiver Epic-Mail don\'t exist in our system' });
+        return res.status(400).json({ status: 400, error: 'Receiver Epic-Mail don\'t exist in our system' });
       }
     } catch (err) {
       return res.status(400).json({

@@ -13,7 +13,7 @@ router.get('/sent', userAuth.validate, MessageController.getSentEmail);
 router.get('/:id',
   userAuth.validate,
   CheckMiddleware.paramIdValid,
-  CheckMiddleware.checkIFMessageExist,
+  CheckMiddleware.checkIfMessageExist,
   MessageController.getAnEmail);
 
 router.post('/',
@@ -26,7 +26,7 @@ router.post('/',
 router.delete('/:id',
   userAuth.validate,
   CheckMiddleware.paramIdValid,
-  CheckMiddleware.checkIFMessageExist,
+  CheckMiddleware.checkIfMessageExist,
   CheckMiddleware.getUserId,
   MessageController.deleteAnEmail);
 

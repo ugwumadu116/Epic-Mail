@@ -8,7 +8,7 @@ class UserMiddleware {
         lastName: Joi.string().required(),
         email: Joi.string()
           .email()
-          .regex(/[^@]+@[^\.]+\..+/)
+          .regex(/[^@]+@[^.]+\..+/)
           .required(),
         password: Joi.string()
           .min(7)

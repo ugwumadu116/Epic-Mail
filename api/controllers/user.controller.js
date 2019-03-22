@@ -17,7 +17,6 @@ class UserController {
         hashPassword,
       } = req.userData;
       const safeUser = {
-        hashPassword,
         epicMail,
       };
       const jwtToken = jwt.sign({ user: safeUser }, secret, {
@@ -28,10 +27,17 @@ class UserController {
       const client = await db.connect();
       const insertedResult = await client.query(sql, bindingParameter);
       client.release();
+      const userDetails = {
+        firstName: insertedResult.rows[0].firstname,
+        lastName: insertedResult.rows[0].lastname,
+        epicMail: insertedResult.rows[0].epicmail,
+        createdAt: insertedResult.rows[0].createdat,
+        updatedAt: insertedResult.rows[0].updatedat,
+      };
       return res.status(201).json({
         status: 201,
         data: [{
-          user: insertedResult.rows,
+          user: userDetails,
           token: jwtToken,
         }],
       });
@@ -46,6 +52,7 @@ class UserController {
   static async loginUser(req, res) {
     try {
       const userDetails = {
+        id: req.userDetails[0].id,
         epicMail: req.userDetails[0].epicmail,
         firstName: req.userDetails[0].firstname,
         lastName: req.userDetails[0].lastname,
@@ -55,7 +62,7 @@ class UserController {
 
       const result = await bcrypt.compare(req.body.password, req.userDetails[0].password);
       if (!result) {
-        throw new Error("User details don't match our records password");
+        throw new Error('Epicmail or password is wrong');
       }
       const safeUser = {
         epicMail: userDetails.epicMail,
@@ -69,8 +76,8 @@ class UserController {
         userDetails,
       });
     } catch (error) {
-      return res.status(404).json({
-        status: 404,
+      return res.status(400).json({
+        status: 400,
         message: error.message,
       });
     }

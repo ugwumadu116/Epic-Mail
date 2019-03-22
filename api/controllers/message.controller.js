@@ -3,13 +3,16 @@ import db from '../connection';
 class MessageController {
   static async getEmail(req, res) {
     try {
-      const sql = 'SELECT message.subject, message.message, message.createdon, message.senderemail, inbox.status FROM message INNER JOIN inbox ON message.id = inbox.messageid AND message.receiveremail = $1';
+      const sql = 'SELECT message.id, message.subject, message.message, message.createdon, message.senderemail, inbox.status FROM message INNER JOIN inbox ON message.id = inbox.messageid AND message.receiveremail = $1';
       const bindingParameter = [req.userData.user.epicMail];
       const client = await db.connect();
       const insertedResult = await client.query(sql, bindingParameter);
       client.release();
       if (insertedResult.rowCount === 0) {
-        throw new Error('No mail found');
+        return res.status(200).json({
+          status: 200,
+          data: insertedResult.rows,
+        });
       }
       return res.status(200).json({
         status: 200,
@@ -25,13 +28,16 @@ class MessageController {
 
   static async getUnreadEmail(req, res) {
     try {
-      const sql = 'SELECT message.subject, message.message, message.createdon, message.senderemail, inbox.status FROM message INNER JOIN inbox ON message.id = inbox.messageid AND inbox.status = $1 ';
+      const sql = 'SELECT message.id, message.subject, message.message, message.createdon, message.senderemail, inbox.status FROM message INNER JOIN inbox ON message.id = inbox.messageid AND inbox.status = $1 ';
       const bindingParameter = ['unread'];
       const client = await db.connect();
       const insertedResult = await client.query(sql, bindingParameter);
       client.release();
       if (insertedResult.rowCount === 0) {
-        throw new Error('No unread mail found');
+        return res.status(200).json({
+          status: 200,
+          message: insertedResult.rows,
+        });
       }
       return res.status(200).json({
         status: 200,
@@ -47,13 +53,16 @@ class MessageController {
 
   static async getSentEmail(req, res) {
     try {
-      const sql = 'SELECT message.subject, message.message, message.createdon, message.senderemail, sent.status FROM message INNER JOIN sent ON message.id = sent.messageid AND message.senderemail = $1';
+      const sql = 'SELECT message.id, message.subject, message.message, message.createdon, message.senderemail, sent.status FROM message INNER JOIN sent ON message.id = sent.messageid AND message.senderemail = $1';
       const bindingParameter = [req.userData.user.epicMail];
       const client = await db.connect();
       const insertedResult = await client.query(sql, bindingParameter);
       client.release();
       if (insertedResult.rowCount === 0) {
-        throw new Error('No sent mail found');
+        return res.status(200).json({
+          status: 200,
+          message: insertedResult.rows,
+        });
       }
       return res.status(200).json({
         status: 200,
@@ -70,7 +79,7 @@ class MessageController {
   static async getAnEmail(req, res) {
     try {
       const { id } = req.params;
-      const sql = 'SELECT message.subject, message.message, message.createdon, message.senderemail, inbox.status FROM message INNER JOIN inbox ON message.id = $1 AND inbox.messageid = $2 AND message.receiveremail = $3';
+      const sql = 'SELECT message.id, message.subject, message.message, message.createdon, message.senderemail, inbox.status FROM message INNER JOIN inbox ON message.id = $1 AND inbox.messageid = $2 AND message.receiveremail = $3';
       const bindingParameter = [id, id, req.userData.user.epicMail];
       const client = await db.connect();
       const insertedResult = await client.query(sql, bindingParameter);
@@ -78,7 +87,7 @@ class MessageController {
       if (insertedResult.rowCount === 0) {
         return res.status(404).json({
           status: 404,
-          message: 'Message not found',
+          message: 'Not found',
         });
       }
       return res.status(200).json({
