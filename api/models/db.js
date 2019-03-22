@@ -1,4 +1,4 @@
-import connectDb from './api/connection';
+import connectDb from '../connection';
 
 const registeredUserTable = `
 DROP TABLE IF EXISTS users;

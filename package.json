@@ -8,7 +8,7 @@
     "test": "npm run table-schema2 && nyc mocha -r esm --exit",
     "dev": "nodemon --exec babel-node ./api/index.js",
     "table-schema2": "babel-node testDb.js",
-    "table-schema": "babel-node db.js",
+    "table-schema": "babel-node ./api/models/db.js",
     "build": "npm run clean && npm run build-babel",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./api -s",

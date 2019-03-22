@@ -3,7 +3,7 @@ import trimRequest from 'trim-request';
 import userAuth from '../middleware/userAuth';
 import MessageController from '../controllers/message.controller';
 import MessageMiddleware from '../middleware/messageValidator';
-import CheckMiddleware from '../middleware/helpers';
+import CheckMiddleware from '../helpers/helpers';
 
 const router = express.Router();
 

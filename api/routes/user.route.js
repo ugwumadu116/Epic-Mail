@@ -2,7 +2,7 @@ import express from 'express';
 import trimRequest from 'trim-request';
 import UserController from '../controllers/user.controller';
 import UserMiddleware from '../middleware/userValidator';
-import CheckMiddleware from '../middleware/helpers';
+import CheckMiddleware from '../helpers/helpers';
 
 const router = express.Router();
 
