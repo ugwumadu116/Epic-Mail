@@ -7,7 +7,7 @@
     "start": "node ./build/index.js",
     "test": "npm run table-schema && nyc mocha -r esm --exit",
     "dev": "nodemon --exec babel-node ./api/index.js",
-    "table-schema": "babel-node db.js",
+    "table-schema": "babel-node testDb.js",
     "heroku-postbuild": "npm run clean && npm run build-babel",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./api -s",
