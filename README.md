@@ -77,7 +77,7 @@ https://github.com/ugwumadu116/Epic-Mail.git
 ## Running the tests
 Run `npm test` in the terminal for the cloned folder.
 ## Heroku endpoints
-Base URL: https://peaceful-forest-12339.herokuapp.com
+Base URL: https://epic-mail-app-andela.herokuapp.com
 
 
 ## Built With
@@ -86,8 +86,6 @@ Base URL: https://peaceful-forest-12339.herokuapp.com
 
 ## GitHub Pages
 URL: https://ugwumadu116.github.io/Epic-Mail/ui/
-## Heroku endpoints
-Base URL: https://peaceful-forest-12339.herokuapp.com
 
 ## Pivotal Tracker board
 URL:  https://www.pivotaltracker.com/n/projects/2315337
