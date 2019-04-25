@@ -1,5 +1,5 @@
 import express from 'express';
-import trimRequest from 'trim-request';
+// import trimRequest from 'trim-request';
 import userAuth from '../middleware/userAuth';
 import MessageController from '../controllers/message.controller';
 import CheckMiddleware from '../middleware/helpers';
