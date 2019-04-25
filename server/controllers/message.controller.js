@@ -1,4 +1,4 @@
-import db from '../connection';
+import db from '../config/db';
 
 class MessageController {
   static async getEmail(req, res) {

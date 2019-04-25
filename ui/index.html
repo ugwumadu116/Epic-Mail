@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,11 +22,33 @@
       <h1>Welcome To Epic Mail</h1>
       <p>send mails to your friends here</p>
     </div>
+
+    <footer>
+      <button id="btn-address" class="mdc-icon-button material-icons">directions</button>
+      <button id="btn-phone" class="mdc-icon-button material-icons">phone</button>
+      <button id="btn-birthdate" class="mdc-icon-button material-icons">date_range</button>
+    </footer>
+    <footer>
+      <button id="btn-address" class="mdc-icon-button material-icons"><i>directions</i></button>
+      <button id="btn-phone" class="mdc-icon-button material-icons"><i>phone</i></button>
+      <button id="btn-birthdate" class="mdc-icon-button material-icons"><i>date_range</i></button>
+    </footer>
     <div class="container">
+      <img src="https://via.placeholder.com/">
+      <img src="https://via.placeholder.com/728x90.png">
       <a href="./signup.html" class="signup">signup</a>
       <a href="./login.html" class="login">login</a>
     </div>
   </section>
+  <script>
+    const digitize = (n) => {
+      r = n.toString().split('');
+      r.forEach((el, i, a) => { a[i] = parseInt(el); })
+      return r
+    }
+
+    console.log(digitize(123))  // [1, 2, 3]
+  </script>
 </body>
 
 </html>

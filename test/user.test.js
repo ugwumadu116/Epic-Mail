@@ -1,20 +1,21 @@
 import chai from 'chai';
 import chaiHTTP from 'chai-http';
-import app from '../api/index';
+import app from '../server/index';
 
 const { assert, expect, use } = chai;
 
 use(chaiHTTP);
 
-const API_PREFIX = '/api/v2';
+const API_PREFIX = '/api/v1';
 before(async () => {
   await chai
     .request(app)
     .post(`${API_PREFIX}/auth/signup`)
     .send({
       firstName: 'joel',
-      lastName: 'ugwumadu2',
-      email: 'joel@test.com',
+      lastName: 'ugwumadu',
+      epicMail: 'ugwumadu',
+      phone: '07064586146',
       password: 'password',
     });
   await chai
@@ -23,22 +24,23 @@ before(async () => {
     .send({
       firstName: 'test',
       lastName: 'test',
-      email: 'test@test.com',
-      password: 'password2',
-    });
-  await chai
-    .request(app)
-    .post(`${API_PREFIX}/auth/login`)
-    .send({
-      epicMail: 'joel@epicmail.com',
+      epicMail: 'testing',
+      phone: '07064586146',
       password: 'password',
     });
   await chai
     .request(app)
     .post(`${API_PREFIX}/auth/login`)
     .send({
-      epicMail: 'test@epicmail.com',
-      password: 'password2',
+      epicMail: 'ugwumadu@epicmail.com',
+      password: 'password',
+    });
+  await chai
+    .request(app)
+    .post(`${API_PREFIX}/auth/login`)
+    .send({
+      epicMail: 'testing@epicmail.com',
+      password: 'password',
     });
 });
 
@@ -60,14 +62,16 @@ describe('User Auth Signup Endpoint Tests', () => {
       .request(app)
       .post(`${API_PREFIX}/auth/signup`)
       .send({
-        firstName: 'Roger',
-        lastName: 'Test',
-        email: 'roger@test.com',
+        firstName: 'test',
+        lastName: 'test',
+        epicMail: '',
+        phone: '07064586146',
+        password: 'password',
       })
       .then((res) => {
         expect(res).to.have.status(400);
         assert.equal(res.body.status, 400);
-        assert.equal(res.body.type, 'validation');
+        assert.equal(res.body.message.epicMail, 'Epic mail must be alphabets and at least 6 characters long');
       });
     done();
   });
@@ -76,52 +80,71 @@ describe('User Auth Signup Endpoint Tests', () => {
       .request(app)
       .post(`${API_PREFIX}/auth/signup`)
       .send({
-        firstName: 'Roger',
-        lastName: 'Test',
-        email: 'rogetest.com',
+        firstName: 'test',
+        lastName: 'test',
+        epicMail: 'testing',
+        phone: '07064586146',
         password: 'password',
       })
       .then((res) => {
-        expect(res).to.have.status(400);
-        assert.equal(res.body.status, 400);
-        assert.equal(res.body.type, 'validation');
+        expect(res).to.have.status(409);
+        assert.equal(res.body.status, 409);
+        assert.equal(res.body.message, 'email already exists');
       });
     done();
   });
-  it("POST /auth/signup - User Can't signup again with the same email", (done) => {
+  it("POST /auth/signup - User can't signup with an already registered phone number", (done) => {
     chai
       .request(app)
       .post(`${API_PREFIX}/auth/signup`)
       .send({
         firstName: 'test',
         lastName: 'test',
-        email: 'roger2@test.com',
-        password: 'password2',
+        epicMail: 'testinguu',
+        phone: '07064586146',
+        password: 'password',
       })
       .then((res) => {
-        expect(res).to.have.status(400);
-        assert.equal(res.body.status, 400);
-        expect(res.body.message).to.equal('first name and last name already exits');
+        expect(res).to.have.status(409);
+        assert.equal(res.body.status, 409);
+        assert.equal(res.body.message, 'phone number already exist');
       });
     done();
   });
-});
+  //   it("POST /auth/signup - User Can't signup again with the same email", (done) => {
+  //     chai
+  //       .request(app)
+  //       .post(`${API_PREFIX}/auth/signup`)
+  //       .send({
+  //         firstName: 'test',
+  //         lastName: 'test',
+  //         email: 'roger2@test.com',
+  //         password: 'password2',
+  //       })
+  //       .then((res) => {
+  //         expect(res).to.have.status(400);
+  //         assert.equal(res.body.status, 400);
+  //         expect(res.body.message).to.equal('first name and last name already exits');
+  //       });
+  //     done();
+  //   });
+  // });
 
-describe('User Auth Login Endpoint Tests', () => {
-  it('POST /auth/login - User Login Validation Test(Required)', (done) => {
-    chai
-      .request(app)
-      .post(`${API_PREFIX}/auth/login`)
-      .send({
-        epicMail: 'roger@test.com',
-      })
-      .then((res) => {
-        expect(res).to.have.status(400);
-        assert.equal(res.body.status, 400);
-        assert.equal(res.body.type, 'validation');
-      });
-    done();
-  });
+  // describe('User Auth Login Endpoint Tests', () => {
+  //   it('POST /auth/login - User Login Validation Test(Required)', (done) => {
+  //     chai
+  //       .request(app)
+  //       .post(`${API_PREFIX}/auth/login`)
+  //       .send({
+  //         epicMail: 'roger@test.com',
+  //       })
+  //       .then((res) => {
+  //         expect(res).to.have.status(400);
+  //         assert.equal(res.body.status, 400);
+  //         assert.equal(res.body.type, 'validation');
+  //       });
+  //     done();
+  //   });
   // it('POST /auth/login - User Login Validation Test(Email)', (done) => {
   //   chai
   //     .request(app)
