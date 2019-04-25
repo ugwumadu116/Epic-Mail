@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import creatMail from '../helpers/userValidator';
 import db from '../config/db';
 // import logger from '../config/logging';
+// "bcrypt": "^3.0.4",
 
 dotenv.config();
 const secret = process.env.SECRET;
@@ -24,8 +25,7 @@ class UserController {
       await creatMail.checkIfEmailExist(epicmail);
       await creatMail.checkIfPhoneExist(phone);
 
-      const salt = bcrypt.genSaltSync(10);
-      const hash = bcrypt.hashSync(password, salt);
+      const hash = await bcrypt.hash(password, 10);
 
       const sql = 'INSERT INTO usersx (firstname, lastname, epicmail, password, phone) VALUES($1, $2, $3, $4, $5) RETURNING *';
       const bindParameters = [firstname, lastname, epicmail, hash, phone];
