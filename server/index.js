@@ -6,7 +6,7 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json';
 
 import userRouter from './routes/user.route';
-import messageRouter from './routes/message.route';
+// import messageRouter from './routes/message.route';
 
 const app = express();
 dotenv.config();
@@ -17,14 +17,14 @@ app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const PORT = process.env.PORT || 3001;
-const prefix = '/api/v2';
+const prefix = '/api/v1';
 
 app.get('/', (req, res) => {
   res.status(200).send('welcome to Epic-Mail Api');
 });
 
 app.use(`${prefix}/`, userRouter);
-app.use(`${prefix}/messages`, messageRouter);
+// app.use(`${prefix}/messages`, messageRouter);
 
 
 app.listen(PORT, () => console.log(`Welcome ${PORT}`));

@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import db from '../connection';
+import db from '../config/db';
 
 const epic = '@epicmail.com';
 
@@ -21,7 +21,7 @@ class CheckMiddleware {
         epicMail: userEpicMail.toLowerCase(),
         hashPassword,
       };
-      const sql = 'SELECT * FROM users WHERE epicmail = $1';
+      const sql = 'SELECT * FROM usersx WHERE epicmail = $1';
       const bindingParameter = [user.epicMail];
       const client = await db.connect();
       const resultOfEmailAvailabilityCheck = await client.query(sql, bindingParameter);
@@ -42,7 +42,7 @@ class CheckMiddleware {
 
   static async checkLoginEmail(req, res, next) {
     try {
-      const sql = 'SELECT * FROM users WHERE epicmail = $1';
+      const sql = 'SELECT * FROM usersx WHERE epicmail = $1';
       const bindingParameter = [req.body.epicMail];
       const client = await db.connect();
       const emailCheck = await client.query(sql, bindingParameter);
@@ -64,7 +64,7 @@ class CheckMiddleware {
 
   static async getUserId(req, res, next) {
     try {
-      const sql = 'SELECT * FROM users WHERE epicmail = $1';
+      const sql = 'SELECT * FROM usersx WHERE epicmail = $1';
       const bindingParameter = [req.userData.user.epicMail];
       const client = await db.connect();
       const emailCheck = await client.query(sql, bindingParameter);
@@ -120,12 +120,12 @@ class CheckMiddleware {
   static async checkIfReceiverEmailExist(req, res, next) {
     try {
       const receiverEmail = req.body.receiverEmail.toLowerCase();
-      const sql = 'SELECT * FROM users WHERE epicmail = $1';
+      const sql = 'SELECT * FROM usersx WHERE epicmail = $1';
       const bindingParameter = [receiverEmail];
       const client = await db.connect();
       const resultOfReceiverEmail = await client.query(sql, bindingParameter);
       if (resultOfReceiverEmail.rowCount > 0) {
-        const sql2 = 'SELECT * FROM users WHERE epicmail = $1';
+        const sql2 = 'SELECT * FROM usersx WHERE epicmail = $1';
         const bindingParameter2 = [req.userData.user.epicMail];
         const myInfo = await client.query(sql2, bindingParameter2);
         req.myInfos = myInfo.rows;
