@@ -126,21 +126,6 @@ describe('User Auth Signup Endpoint Tests', () => {
       });
     done();
   });
-  it('POST /auth/login - User Login Validation Test(Email)', (done) => {
-    chai
-      .request(app)
-      .post(`${API_PREFIX}/auth/login`)
-      .send({
-        epicMail: '@roger',
-        password: 'password',
-      })
-      .then((res) => {
-        expect(res).to.have.status(404);
-        assert.equal(res.body.status, 404);
-        assert.equal(res.body.message, 'invalid password or email');
-      });
-    done();
-  });
 });
 // describe('User Auth Login Endpoint Tests', () => {
 //   it('POST /auth/login - User Login Validation Test(Required)', (done) => {
