@@ -6,7 +6,7 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json';
 
 import userRouter from './routes/user.route';
-import messageRouter from './routes/message.route';
+// import messageRouter from './routes/message.route';
 
 const app = express();
 dotenv.config();
@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(`${prefix}/`, userRouter);
-app.use(`${prefix}/messages`, messageRouter);
+// app.use(`${prefix}/messages`, messageRouter);
 
 
 app.listen(PORT, () => console.log(`Welcome ${PORT}`));

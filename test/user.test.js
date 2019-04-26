@@ -83,7 +83,7 @@ describe('User Auth Signup Endpoint Tests', () => {
         firstName: 'test',
         lastName: 'test',
         epicMail: 'testing',
-        phone: '07064586146',
+        phone: '07063586146',
         password: 'password',
       })
       .then((res) => {
@@ -111,79 +111,92 @@ describe('User Auth Signup Endpoint Tests', () => {
       });
     done();
   });
-  //   it("POST /auth/signup - User Can't signup again with the same email", (done) => {
-  //     chai
-  //       .request(app)
-  //       .post(`${API_PREFIX}/auth/signup`)
-  //       .send({
-  //         firstName: 'test',
-  //         lastName: 'test',
-  //         email: 'roger2@test.com',
-  //         password: 'password2',
-  //       })
-  //       .then((res) => {
-  //         expect(res).to.have.status(400);
-  //         assert.equal(res.body.status, 400);
-  //         expect(res.body.message).to.equal('first name and last name already exits');
-  //       });
-  //     done();
-  //   });
-  // });
-
-  // describe('User Auth Login Endpoint Tests', () => {
-  //   it('POST /auth/login - User Login Validation Test(Required)', (done) => {
-  //     chai
-  //       .request(app)
-  //       .post(`${API_PREFIX}/auth/login`)
-  //       .send({
-  //         epicMail: 'roger@test.com',
-  //       })
-  //       .then((res) => {
-  //         expect(res).to.have.status(400);
-  //         assert.equal(res.body.status, 400);
-  //         assert.equal(res.body.type, 'validation');
-  //       });
-  //     done();
-  //   });
-  // it('POST /auth/login - User Login Validation Test(Email)', (done) => {
-  //   chai
-  //     .request(app)
-  //     .post(`${API_PREFIX}/auth/login`)
-  //     .send({
-  //       epicMail: '@roger',
-  //       password: 'password',
-  //     })
-  //     .then((res) => {
-  //       expect(res).to.have.status(400);
-  //       assert.equal(res.body.type, 'validation');
-  //     });
-  //   done();
-  // });
-  // it('POST /auth/login - User Cannot Login without being registered', (done) => {
-  //   chai
-  //     .request(app)
-  //     .post(`${API_PREFIX}/auth/login`)
-  //     .send({
-  //       epicMail: 'thesis@science.com',
-  //       password: 'password',
-  //     })
-  //     .then((res) => {
-  //       expect(res).to.have.status(400);
-  //       assert.equal(res.body.status, 400);
-  //     });
-  //   done();
-  // });
-  // it("POST /auth/login - User Can't login with incorrect password", (done) => {
-  //   chai
-  //     .request(app)
-  //     .post(`${API_PREFIX}/auth/login`)
-  //     .send({
-  //       email: 'joel@epicmail.com',
-  //       password: 'password111',
-  //     })
-  //     .then((res) => {
-  //       assert.equal(res.body.status, 400);
-  //     });
-  //   done();
-  // });
+  it('POST /auth/login - User Login Validation Test(Required)', (done) => {
+    chai
+      .request(app)
+      .post(`${API_PREFIX}/auth/login`)
+      .send({
+        epicMail: 'testing@epicmail.com',
+        password: 'passwordn',
+      })
+      .then((res) => {
+        expect(res).to.have.status(404);
+        assert.equal(res.body.status, 404);
+        assert.equal(res.body.message, 'invalid password or email');
+      });
+    done();
+  });
+  it('POST /auth/login - User Login Validation Test(Email)', (done) => {
+    chai
+      .request(app)
+      .post(`${API_PREFIX}/auth/login`)
+      .send({
+        epicMail: '@roger',
+        password: 'password',
+      })
+      .then((res) => {
+        expect(res).to.have.status(404);
+        assert.equal(res.body.status, 404);
+        assert.equal(res.body.message, 'invalid password or email');
+      });
+    done();
+  });
 });
+// describe('User Auth Login Endpoint Tests', () => {
+//   it('POST /auth/login - User Login Validation Test(Required)', (done) => {
+//     chai
+//       .request(app)
+//       .post(`${API_PREFIX}/auth/login`)
+//       .send({
+//         epicMail: 'testing@epicmail.com',
+//         password: 'passwordn',
+//       })
+//       .then((res) => {
+//         expect(res).to.have.status(404);
+//         assert.equal(res.body.status, 404);
+//         assert.equal(res.body.message, 'invalid password or username');
+//       });
+//     done();
+//   });
+//   // it('POST /auth/login - User Login Validation Test(Email)', (done) => {
+//   //   chai
+//   //     .request(app)
+//   //     .post(`${API_PREFIX}/auth/login`)
+//   //     .send({
+//   //       epicMail: '@roger',
+//   //       password: 'password',
+//   //     })
+//   //     .then((res) => {
+//   //       expect(res).to.have.status(400);
+//   //       assert.equal(res.body.type, 'validation');
+//   //     });
+//   //   done();
+//   // });
+//   // it('POST /auth/login - User Cannot Login without being registered', (done) => {
+//   //   chai
+//   //     .request(app)
+//   //     .post(`${API_PREFIX}/auth/login`)
+//   //     .send({
+//   //       epicMail: 'thesis@science.com',
+//   //       password: 'password',
+//   //     })
+//   //     .then((res) => {
+//   //       expect(res).to.have.status(400);
+//   //       assert.equal(res.body.status, 400);
+//   //     });
+//   //   done();
+//   // });
+//   // it("POST /auth/login - User Can't login with incorrect password", (done) => {
+//   //   chai
+//   //     .request(app)
+//   //     .post(`${API_PREFIX}/auth/login`)
+//   //     .send({
+//   //       email: 'joel@epicmail.com',
+//   //       password: 'password111',
+//   //     })
+//   //     .then((res) => {
+//   //       assert.equal(res.body.status, 400);
+//   //     });
+//   //   done();
+//   // });
+// });

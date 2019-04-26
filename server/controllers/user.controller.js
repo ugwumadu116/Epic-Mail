@@ -50,12 +50,6 @@ class UserController {
         }],
       });
     } catch (error) {
-      if (error.message === 'email already exists' || error.message === 'phone number already exist') {
-        return res.status(409).json({
-          status: 409,
-          message: error.message,
-        });
-      }
       return res.status(409).json({
         status: 409,
         message: error.message,
@@ -68,7 +62,7 @@ class UserController {
       const user = await creatMail.checkIfLoginEmailExist(req.body.epicMail);
       const validPassword = await bcrypt.compare(req.body.password, user.password);
       if (!validPassword) {
-        throw new Error('invalid password or username');
+        throw new Error('invalid password or email');
       }
       const newUser = {
         id: user.id,
