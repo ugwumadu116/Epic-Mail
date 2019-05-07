@@ -1,10 +1,13 @@
-// import express from 'express';
-// // import trimRequest from 'trim-request';
+import express from 'express';
+import trimRequest from 'trim-request';
+// import validator from '../helpers/validator';
 // import userAuth from '../middleware/userAuth';
 // import MessageController from '../controllers/message.controller';
 // import CheckMiddleware from '../middleware/helpers';
+// import CheckUserReq from '../middleware/user';
+import verify from '../middleware/tokenHandler';
 
-// const router = express.Router();
+const router = express.Router();
 
 // router.get('/', userAuth.validate, MessageController.getEmail);
 // router.get('/unread', userAuth.validate, MessageController.getUnreadEmail);
@@ -15,17 +18,18 @@
 //   CheckMiddleware.checkIFMessageExist,
 //   MessageController.getAnEmail);
 
-// // router.post('/',
-// //   trimRequest.body,
-// //   userAuth.validate,
-// //   CheckMiddleware.checkIfReceiverEmailExist,
-// //   MessageController.PostAnEmail);
+router.post('/',
+  trimRequest.body,
+  verify.verifyToken);
+// validator.postMessageValidation,
+// CheckUserReq.userReqCheck);
+// MessageController.PostAnEmail);
 
-// // router.delete('/:id',
-// //   userAuth.validate,
-// //   CheckMiddleware.paramIdValid,
-// //   CheckMiddleware.checkIFMessageExist,
-// //   CheckMiddleware.getUserId,
-// //   MessageController.deleteAnEmail);
+// router.delete('/:id',
+//   userAuth.validate,
+//   CheckMiddleware.paramIdValid,
+//   CheckMiddleware.checkIFMessageExist,
+//   CheckMiddleware.getUserId,
+//   MessageController.deleteAnEmail);
 
-// export default router;
+export default router;

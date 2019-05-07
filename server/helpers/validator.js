@@ -39,7 +39,7 @@ const signUpValidation = [
 const postMessageValidation = [
   check('subject')
     .isLength({ min: 2 })
-    .withMessage('Subject is required with minimun length of 2 characters'),
+    .withMessage('Subject is required with minimum length of 2 characters'),
   check('message')
     .isLength({ min: 2 })
     .withMessage('Message is required with minimum length of 2 characters')

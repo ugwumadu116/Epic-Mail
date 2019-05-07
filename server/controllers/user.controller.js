@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import creatMail from '../helpers/userValidator';
 import db from '../config/db';
 // import logger from '../config/logging';
-// "bcrypt": "^3.0.4",
 
 dotenv.config();
 const secret = process.env.SECRET;
